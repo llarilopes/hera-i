@@ -31,3 +31,7 @@ auth.json
 
 # IDE
 .idea
+.vscode
+
+# BD Local Dev
+db_data
