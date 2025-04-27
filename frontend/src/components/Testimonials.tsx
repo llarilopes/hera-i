@@ -25,9 +25,9 @@ const testimonials = [
 
 function getInitialCount() {
   if (typeof window !== 'undefined') {
-    return window.innerWidth < 768 ? 1 : 3;
+    return window.innerWidth < 768 ? 1 : 2;
   }
-  return 3;
+  return 2;
 }
 
 export default function Testimonials() {
@@ -42,7 +42,7 @@ export default function Testimonials() {
     function handleResize() {
       const mobile = window.innerWidth < 768;
       setIsMobile(mobile);
-      setVisibleCount(mobile ? 1 : 3);
+      setVisibleCount(mobile ? 1 : 2);
     }
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
