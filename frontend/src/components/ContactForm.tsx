@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { API_BASE_URL } from '../config';
 
 export default function ContactForm() {
   const [formData, setFormData] = useState({ name: '', email: '', phone: '', message: '' });
@@ -17,7 +18,7 @@ export default function ContactForm() {
     }
     setStatus('loading');
     try {
-      const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/contact`, {
+      const res = await fetch(`${API_BASE_URL}/contact`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),
