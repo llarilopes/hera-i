@@ -6,7 +6,7 @@ export default function Footer() {
           <div className="footer-col">
             <h3>HeRa-i</h3>
             <p>Tecnologia que constrói o futuro.</p>
-            <p>Mais de 20 anos de experiência em desenvolvimento web e sistemas digitais.</p>
+            <p>Quase 30 anos de experiência em desenvolvimento web e sistemas digitais.</p>
           </div>
           <div className="footer-col">
             <h3>Links Úteis</h3>

@@ -4,21 +4,31 @@ export default function About() {
       <div className="container">
         <h2 className="section-title">Sobre Nós</h2>
         <p className="about-text">
-          A HeRa-i é uma agência inteligente de desenvolvimento web e sistemas digitais que nasceu da união de duas mentes brilhantes: Heloisa (14 anos) e Ravi (5 anos), representando uma nova geração de inteligência e criatividade, junto com seus pais Lipe e Lari, que possuem mais de 20 anos de experiência no mercado de tecnologia.
+          A HeRa-i é uma Agência Inteligente de desenvolvimento web e sistemas digitais que nasceu da união de quatro mentes brilhantes: Mr.Goose, Lari Lopes, Heloisa e Ravi Felipe, representando uma nova geração de inteligência e criatividade, que possuem quase 30 anos de experiência no mercado de tecnologia.
         </p>
         <p className="about-text">
           Nossa missão é criar sites, aplicativos e sistemas web modernos, personalizados, escaláveis e com uso inteligente de IA, transformando a presença digital dos nossos clientes e impulsionando seus resultados.
         </p>
         <div className="founders">
           <div className="founder pixel-border">
-            <img src="https://cdn-icons-png.flaticon.com/512/4140/4140048.png" alt="Heloisa" />
-            <h3>Heloisa (14 anos)</h3>
-            <p>Programadora e designer apaixonada por tecnologia, responsável pela parte criativa e inovadora dos projetos.</p>
+            <img src="/imgs/mrgoose.jpg" alt="Mr.Goose" />
+            <h3>Mr.Goose</h3>
+            <p>Programador e Desenvolvedor desde 1998 e entusiasta da Tecnologia desde 1994</p>
           </div>
           <div className="founder pixel-border">
-            <img src="https://cdn-icons-png.flaticon.com/512/4140/4140051.png" alt="Ravi" />
-            <h3>Ravi (5 anos)</h3>
-            <p>O gênio da estratégia que, com sua visão única e criatividade infinita, traz soluções inovadoras para os desafios mais complexos.</p>
+            <img src="/imgs/larilopes.jpg" alt="Lari Lopes" />
+            <h3>Lari Lopes</h3>
+            <p>Gerente de Projetos com +3 Graduações e Pós Graduações em Gestão de Projetos Agéis, Ciência de Dados e Inteligência Artificial</p>
+          </div>
+          <div className="founder pixel-border">
+            <img src="https://cdn-icons-png.flaticon.com/512/4140/4140051.png" alt="Heloisa Lopes" />
+            <h3>Heloisa</h3>
+            <p>Nerd, vaidosa e perfeccionista. Geração Z, responsável pela parte criativa e inovadora dos projetos.</p>
+          </div>
+          <div className="founder pixel-border">
+            <img src="https://cdn-icons-png.flaticon.com/512/4140/4140048.png" alt="Ravi Felipe" />
+            <h3>Ravi Felipe</h3>
+            <p>O mini gênio da Tecnologia e Desenvolvedor Mirim de Jogos e Aplicativos representando a nova geração.</p>
           </div>
         </div>
       </div>
