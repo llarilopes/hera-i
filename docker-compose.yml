@@ -20,6 +20,9 @@ services:
     working_dir: /var/www/html
     volumes:
       - ./backend:/var/www/html
+      - /var/www/html/vendor
+      - /var/www/html/storage
+      - /var/www/html/bootstrap/cache
     depends_on:
       - db
     ports:
@@ -38,6 +41,12 @@ services:
       MAIL_USERNAME: ${MAIL_USERNAME}
       MAIL_PASSWORD: ${MAIL_PASSWORD}
       MAIL_ENCRYPTION: ${MAIL_ENCRYPTION}
+      APACHE_DOCUMENT_ROOT: /var/www/html/public
+    command: >
+      sh -c "composer update --no-dev --optimize-autoloader --no-interaction --prefer-dist \
+      && mkdir -p storage/logs bootstrap/cache \
+      && chown -R www-data:www-data storage bootstrap/cache \
+      && docker-php-entrypoint apache2-foreground"
 
   db:
     image: mysql:8
