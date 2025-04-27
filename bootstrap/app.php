@@ -27,6 +27,11 @@ $app = new Laravel\Lumen\Application(
 $app->withFacades();
 $app->withEloquent();
 
+// Register CORS middleware
+$app->middleware([
+    App\Http\Middleware\CorsMiddleware::class,
+]);
+
 /*
 |--------------------------------------------------------------------------
 | Register Container Bindings
