@@ -186,6 +186,17 @@ header {
     margin-top: 60px;
 }
 
+.founders a.founder {
+    text-decoration: none;
+    color: inherit;
+    transition: color 0.3s ease;
+}
+
+.founders a.founder:hover h3,
+.founders a.founder:hover p {
+    color: var(--primary-color);
+}
+
 .founder {
     flex: 1 1 40%;
     text-align: center;
