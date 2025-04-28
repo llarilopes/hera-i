@@ -48,8 +48,8 @@ header {
 
 .header-container {
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-between;
 }
 
 .logo {
@@ -73,6 +73,24 @@ header {
 .contact-button:hover {
     background-color: var(--primary-dark);
     transform: translateY(-3px);
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 77px;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links li a {
+    text-decoration: none;
+    color: var(--primary-color);
+    font-weight: bold;
+}
+
+.nav-links li a:hover {
+    color: var(--secondary-color);
 }
 
 /* Hero Section */

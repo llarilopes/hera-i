@@ -21,7 +21,7 @@ export default function About() {
             <p>Gerente de Projetos com +3 Graduações e Pós Graduações em Gestão de Projetos Agéis, Ciência de Dados e Inteligência Artificial</p>
           </div>
           <div className="founder pixel-border">
-            <img src="https://cdn-icons-png.flaticon.com/512/4140/4140051.png" alt="Heloisa Lopes" />
+            <img src="/imgs/heloisa.png" alt="Heloisa Lopes" />
             <h3>Heloisa</h3>
             <p>Nerd, vaidosa e perfeccionista. Geração Z, responsável pela parte criativa e inovadora dos projetos.</p>
           </div>
