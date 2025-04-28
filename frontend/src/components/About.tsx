@@ -1,3 +1,5 @@
+import Image from 'next/image';
+
 export default function About() {
   return (
     <section className="about" id="about">
@@ -11,22 +13,22 @@ export default function About() {
         </p>
         <div className="founders">
           <a href="https://www.linkedin.com/in/mrgoose/" className="founder pixel-border" target="_blank" rel="noopener noreferrer">
-            <img src="/imgs/mrgoose.jpg" alt="Mr.Goose" />
+            <Image src="/imgs/mrgoose.jpg" alt="Mr.Goose" width={150} height={150} />
             <h3>Mr.Goose</h3>
             <p>Programador e Desenvolvedor desde 1998 e entusiasta da Tecnologia desde 1994</p>
           </a>
           <a href="https://www.linkedin.com/in/larisselopes/" className="founder pixel-border" target="_blank" rel="noopener noreferrer">
-            <img src="/imgs/larilopes.jpg" alt="Lari Lopes" />
+            <Image src="/imgs/larilopes.jpg" alt="Lari Lopes" width={150} height={150} />
             <h3>Lari Lopes</h3>
             <p>Gerente de Projetos com +3 Graduações e Pós Graduações em Gestão de Projetos Agéis, Ciência de Dados e Inteligência Artificial</p>
           </a>
           <a href="https://www.instagram.com/eu.helo__/" className="founder pixel-border" target="_blank" rel="noopener noreferrer">
-            <img src="/imgs/heloisa.png" alt="Heloisa Lopes" />
+            <Image src="/imgs/heloisa.png" alt="Heloisa Lopes" width={150} height={150} />
             <h3>Heloisa</h3>
             <p>Nerd, vaidosa e perfeccionista. Geração Z, responsável pela parte criativa e inovadora dos projetos.</p>
           </a>
           <a href="https://www.instagram.com/ravi.lipe/" className="founder pixel-border" target="_blank" rel="noopener noreferrer">
-            <img src="https://cdn-icons-png.flaticon.com/512/4140/4140048.png" alt="Ravi Felipe" />
+            <Image src="https://cdn-icons-png.flaticon.com/512/4140/4140048.png" alt="Ravi Felipe" width={150} height={150} />
             <h3>Ravi Felipe</h3>
             <p>O mini gênio da Tecnologia e Desenvolvedor Mirim de Jogos e Aplicativos representando a nova geração.</p>
           </a>

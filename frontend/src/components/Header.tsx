@@ -1,18 +1,21 @@
+import Link from 'next/link';
+import Image from 'next/image';
+
 export default function Header() {
   return (
     <header>
       <div className="container header-container">
-        <a href="#home">
-          <img src="/imgs/logo.png" alt="HeRa-i Logo" className="logo" />
-        </a>
+        <Link href="/#home">
+          <Image src="/imgs/logo.png" alt="HeRa-i Logo" width={150} height={50} className="logo" />
+        </Link>
         <nav className="header-menu">
           <ul className="nav-links">
-            <li><a href="/#about">Sobre Nós</a></li>
-            <li><a href="/#services">Serviços</a></li>
-            <li><a href="/#cases">Cases</a></li>
+            <li><Link href="/#about">Sobre Nós</Link></li>
+            <li><Link href="/#services">Serviços</Link></li>
+            <li><Link href="/#cases">Cases</Link></li>
           </ul>
         </nav>
-        <a href="/#contact" className="contact-button">Fale Conosco</a>
+        <Link href="/#contact" className="contact-button">Fale Conosco</Link>
       </div>
     </header>
   );
