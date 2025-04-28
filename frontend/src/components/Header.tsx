@@ -7,12 +7,12 @@ export default function Header() {
         </a>
         <nav className="header-menu">
           <ul className="nav-links">
-            <li><a href="#about">Sobre Nós</a></li>
-            <li><a href="#services">Serviços</a></li>
-            <li><a href="#cases">Cases</a></li>
+            <li><a href="/#about">Sobre Nós</a></li>
+            <li><a href="/#services">Serviços</a></li>
+            <li><a href="/#cases">Cases</a></li>
           </ul>
         </nav>
-        <a href="#contact" className="contact-button">Fale Conosco</a>
+        <a href="/#contact" className="contact-button">Fale Conosco</a>
       </div>
     </header>
   );

@@ -627,3 +627,8 @@ footer {
     opacity: 0.1;
     border-radius: 5px;
 }
+
+/* Global Smooth Scroll */
+html {
+    scroll-behavior: smooth;
+}
