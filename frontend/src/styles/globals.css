@@ -90,7 +90,7 @@ header {
 }
 
 .nav-links li a:hover {
-    color: var(--secondary-color);
+    color: #fff;
 }
 
 /* Hero Section */
