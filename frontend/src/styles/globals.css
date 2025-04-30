@@ -164,8 +164,25 @@ header {
         align-items: center;
     }
     
+    /* Ajustes específicos para a versão mobile com todos os links */
+    .mobile-nav-links {
+        gap: 20px; /* Espaçamento menor entre os itens */
+        margin-top: 20px;
+        margin-bottom: 60px; /* Espaço para o botão de contato no final */
+        max-height: 70vh; /* Altura máxima para evitar overflow */
+        overflow-y: auto; /* Permitir rolagem se necessário */
+    }
+    
     .nav-links li a {
-        font-size: 16px;
+        font-size: 14px;
+        display: block;
+        padding: 8px 0;
+    }
+    
+    /* Destaque para o item ativo */
+    .nav-links li a:active {
+        color: #fff;
+        transform: scale(1.05);
     }
     
     /* Adicionar um segundo botão de contato dentro do menu quando aberto */

@@ -65,14 +65,30 @@ export default function Header() {
           </button>
         )}
 
-        {/* Menu de navegação - visível em desktop ou quando expandido em mobile */}
+        {/* Menu de navegação - versão desktop e mobile são diferentes */}
         <nav className={`header-menu ${isMobile ? (menuOpen ? 'mobile-open' : 'mobile-closed') : ''}`}>
-          <ul className="nav-links">
-            <li><Link href="/#about" onClick={() => isMobile && setMenuOpen(false)}>Quem Somos</Link></li>
-            <li><Link href="/#services" onClick={() => isMobile && setMenuOpen(false)}>Serviços</Link></li>
-            <li><Link href="/#cases" onClick={() => isMobile && setMenuOpen(false)}>Cases</Link></li>
-            <li><Link href="/#faq" onClick={() => isMobile && setMenuOpen(false)}>FAQ</Link></li>
-          </ul>
+          {/* Links para desktop - versão reduzida */}
+          {!isMobile && (
+            <ul className="nav-links">
+              <li><Link href="/#about">Quem Somos</Link></li>
+              <li><Link href="/#services">Serviços</Link></li>
+              <li><Link href="/#cases">Cases</Link></li>
+              <li><Link href="/#faq">FAQ</Link></li>
+            </ul>
+          )}
+          
+          {/* Links para mobile - versão completa com todos os links do footer */}
+          {isMobile && (
+            <ul className="nav-links mobile-nav-links">
+              <li><Link href="/#home" onClick={() => setMenuOpen(false)}>Início</Link></li>
+              <li><Link href="/#about" onClick={() => setMenuOpen(false)}>Quem Somos</Link></li>
+              <li><Link href="/#services" onClick={() => setMenuOpen(false)}>Serviços</Link></li>
+              <li><Link href="/#cases" onClick={() => setMenuOpen(false)}>Cases</Link></li>
+              <li><Link href="/#testimonials" onClick={() => setMenuOpen(false)}>Recomendações</Link></li>
+              <li><Link href="/#faq" onClick={() => setMenuOpen(false)}>Perguntas Frequentes</Link></li>
+              <li><Link href="/#contact" onClick={() => setMenuOpen(false)}>Contato</Link></li>
+            </ul>
+          )}
         </nav>
 
         {/* Botão de contato - visível apenas em desktop */}
