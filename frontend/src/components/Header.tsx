@@ -6,14 +6,21 @@ export default function Header() {
     <header>
       <div className="container header-container">
         <Link href="/#home">
-          <Image src="/imgs/logo.png" alt="HeRa-i Logo" width={150} height={50} className="logo" />
+          <Image 
+            src="/imgs/logo.png" 
+            alt="HeRa-i Logo" 
+            width={150} 
+            height={50} 
+            className="logo" 
+            priority={true} 
+          />
         </Link>
         <nav className="header-menu">
           <ul className="nav-links">
-            <li><Link href="/#about">Sobre Nós</Link></li>
+            <li><Link href="/#about">Quem Somos</Link></li>
             <li><Link href="/#services">Serviços</Link></li>
             <li><Link href="/#cases">Cases</Link></li>
-            <li><Link href="/#faq">Perguntas Frequentes</Link></li>
+            <li><Link href="/#faq">FAQ</Link></li>
           </ul>
         </nav>
         <Link href="/#contact" className="contact-button">Fale Conosco</Link>

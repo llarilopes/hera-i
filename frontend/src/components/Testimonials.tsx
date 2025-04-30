@@ -83,26 +83,32 @@ const testimonials = [
   },
 ];
 
-function getInitialCount() {
-  if (typeof window !== 'undefined') {
-    return window.innerWidth < 768 ? 1 : 2;
-  }
-  return 2;
-}
+// Valor inicial fixo para SSR
+// Será atualizado no useEffect para evitar erros de hidratação
+const INITIAL_COUNT = 2;
 
 export default function Testimonials() {
-  const [visibleCount, setVisibleCount] = useState(getInitialCount());
-  const [isMobile, setIsMobile] = useState(
-    typeof window !== 'undefined' ? window.innerWidth < 768 : false
-  );
+  // Inicialização com valores fixos para SSR
+  const [visibleCount, setVisibleCount] = useState(INITIAL_COUNT);
+  const [isMobile, setIsMobile] = useState(false);
 
-  // Responsividade: reinicia ao redimensionar
+  // Detecta mobile/desktop e ajusta a contagem de depoimentos visíveis
   useEffect(() => {
+    // Detecta o tamanho inicial da tela
+    const checkMobile = () => window.innerWidth < 768;
+    const initialMobile = checkMobile();
+    
+    // Atualiza os estados com base na detecção real do dispositivo
+    setIsMobile(initialMobile);
+    setVisibleCount(initialMobile ? 1 : 2);
+    
+    // Configura o listener para redimensionamento
     function handleResize() {
-      const mobile = window.innerWidth < 768;
+      const mobile = checkMobile();
       setIsMobile(mobile);
       setVisibleCount(mobile ? 1 : 2);
     }
+    
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
@@ -111,7 +117,7 @@ export default function Testimonials() {
   const buttonRef = React.createRef<HTMLButtonElement>();
 
   function handleShowMore() {
-    setVisibleCount((prev) => Math.min(prev + 1, testimonials.length));
+    setVisibleCount((prevCount: number) => Math.min(prevCount + 1, testimonials.length));
     setTimeout(() => {
       buttonRef.current?.focus();
     }, 0);
