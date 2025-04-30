@@ -75,6 +75,7 @@ header {
     transform: translateY(-3px);
 }
 
+/* Menu de navegação */
 .nav-links {
     list-style: none;
     display: flex;
@@ -87,10 +88,82 @@ header {
     text-decoration: none;
     color: var(--primary-color);
     font-weight: bold;
+    transition: var(--transition);
 }
 
 .nav-links li a:hover {
     color: #fff;
+}
+
+/* Menu Hamburguer */
+.hamburger-menu {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 21px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 1100;
+}
+
+.hamburger-menu span {
+    width: 100%;
+    height: 3px;
+    background-color: var(--primary-color);
+    transition: var(--transition);
+}
+
+/* Estilos para o menu mobile */
+@media (max-width: 767px) {
+    .hamburger-menu {
+        display: flex;
+    }
+    
+    .header-menu {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 80%;
+        height: 100vh;
+        background-color: rgba(0, 0, 0, 0.95);
+        padding: 80px 20px 20px;
+        transition: right 0.3s ease;
+        z-index: 1000;
+    }
+    
+    .header-menu.mobile-open {
+        right: 0;
+    }
+    
+    .header-menu.mobile-closed {
+        right: -100%;
+    }
+    
+    .nav-links {
+        flex-direction: column;
+        gap: 30px;
+        align-items: center;
+    }
+    
+    .nav-links li a {
+        font-size: 16px;
+    }
+    
+    .contact-button.mobile-hidden {
+        display: none;
+    }
+    
+    /* Quando o menu está aberto, o botão de contato aparece dentro do menu */
+    .header-menu.mobile-open + .contact-button {
+        position: fixed;
+        bottom: 40px;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 1001;
+    }
 }
 
 /* Hero Section */
