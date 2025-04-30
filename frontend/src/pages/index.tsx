@@ -5,12 +5,13 @@ import About from '@/components/About';
 import Services from '@/components/Services';
 import Cases from '@/components/Cases';
 import Testimonials from '@/components/Testimonials';
+import FaqAccordion from '@/components/FaqAccordion';
 import ContactForm from '@/components/ContactForm';
 import Footer from '@/components/Footer';
 
 export default function Home() {
   useEffect(() => {
-    const sections = document.querySelectorAll('.about, .services, .cases, .testimonials, .contact');
+    const sections = document.querySelectorAll('.about, .services, .cases, .testimonials, .faq, .contact');
     const anchors = document.querySelectorAll('a[href^="#"]');
     const pixelBorders = document.querySelectorAll('.pixel-border');
 
@@ -60,6 +61,7 @@ export default function Home() {
       <Services />
       <Cases />
       <Testimonials />
+      <FaqAccordion />
       <ContactForm />
       <Footer />
     </>

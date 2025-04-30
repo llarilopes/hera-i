@@ -19,3 +19,12 @@ $router->get('/', function () use ($router) {
 
 // Rota para receber contato do frontend
 $router->post('/contact', 'ContactController@store');
+
+// Rotas para FAQ
+$router->get('/faq/questions', 'FaqController@getQuestions');
+$router->post('/faq/vote', 'FaqController@registerVote');
+$router->post('/faq/click', 'FaqController@registerClick');
+
+// Rotas para visitas
+$router->post('/visits/start', 'VisitController@registerStart');
+$router->post('/visits/end', 'VisitController@registerEnd');
