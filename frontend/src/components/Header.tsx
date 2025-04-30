@@ -40,6 +40,17 @@ export default function Header() {
           />
         </Link>
         
+        {/* Botão de contato - sempre visível em mobile */}
+        {isMobile && (
+          <Link 
+            href="/#contact" 
+            className="contact-button mobile-contact"
+            onClick={() => menuOpen && setMenuOpen(false)}
+          >
+            Fale Conosco
+          </Link>
+        )}
+
         {/* Menu Hamburguer para Mobile */}
         {isMobile && (
           <button 
@@ -64,14 +75,15 @@ export default function Header() {
           </ul>
         </nav>
 
-        {/* Botão de contato - visível em desktop ou quando expandido em mobile */}
-        <Link 
-          href="/#contact" 
-          className={`contact-button ${isMobile && !menuOpen ? 'mobile-hidden' : ''}`}
-          onClick={() => isMobile && setMenuOpen(false)}
-        >
-          Fale Conosco
-        </Link>
+        {/* Botão de contato - visível apenas em desktop */}
+        {!isMobile && (
+          <Link 
+            href="/#contact" 
+            className="contact-button"
+          >
+            Fale Conosco
+          </Link>
+        )}
       </div>
     </header>
   );

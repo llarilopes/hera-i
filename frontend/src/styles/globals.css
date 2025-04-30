@@ -118,6 +118,22 @@ header {
 
 /* Estilos para o menu mobile */
 @media (max-width: 767px) {
+    /* Ajuste no container do header para acomodar 3 elementos */
+    .header-container {
+        justify-content: space-between;
+        gap: 10px;
+    }
+    
+    /* Botão de contato no mobile */
+    .contact-button.mobile-contact {
+        font-size: 10px;
+        padding: 8px 3px;
+        white-space: nowrap;
+        /* Garantir que fique menor para caber no header */
+        max-width: 126px;
+        text-align: center;
+    }
+    
     .hamburger-menu {
         display: flex;
     }
@@ -152,16 +168,21 @@ header {
         font-size: 16px;
     }
     
-    .contact-button.mobile-hidden {
-        display: none;
-    }
-    
-    /* Quando o menu está aberto, o botão de contato aparece dentro do menu */
-    .header-menu.mobile-open + .contact-button {
+    /* Adicionar um segundo botão de contato dentro do menu quando aberto */
+    .header-menu.mobile-open::after {
+        content: 'Fale Conosco';
         position: fixed;
         bottom: 40px;
         left: 50%;
         transform: translateX(-50%);
+        background-color: var(--primary-color);
+        color: var(--secondary-color);
+        padding: 10px 20px;
+        font-family: 'Press Start 2P', cursive;
+        font-size: 12px;
+        text-transform: uppercase;
+        cursor: pointer;
+        text-decoration: none;
         z-index: 1001;
     }
 }
