@@ -28,7 +28,7 @@ export default function About() {
             <p>Nerd, vaidosa e perfeccionista. Geração Z, responsável pela parte criativa e inovadora dos projetos.</p>
           </a>
           <a href="https://www.instagram.com/ravi.lipe/" className="founder pixel-border" target="_blank" rel="noopener noreferrer">
-            <Image src="/imgs/ravilipe.jpg" alt="Ravi Felipe" width={150} height={150} />
+            <Image src="/imgs/ravilipe.png" alt="Ravi Felipe" width={150} height={150} />
             <h3>RAVI FELIPE</h3>
             <p>O mini gênio da Tecnologia e Desenvolvedor Mirim de Jogos e Aplicativos representando a nova geração.</p>
           </a>
