@@ -715,9 +715,18 @@ footer {
     background-color: white;
 }
 
-.faq-content p {
+.faq-content .faq-answer {
     color: #4b5563;
     line-height: 1.6;
+}
+
+.faq-answer p {
+    margin-bottom: 1em;
+}
+
+.faq-answer strong {
+    font-weight: 600;
+    color: var(--primary-dark);
 }
 
 [data-state=open] .faq-header {

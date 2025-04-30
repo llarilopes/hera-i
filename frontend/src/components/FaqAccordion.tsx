@@ -158,7 +158,7 @@ const FaqAccordion = () => {
                     animate={{ opacity: 1, height: 'auto' }}
                     transition={{ duration: 0.3, ease: 'easeInOut' }}
                   >
-                    <p>{q.answer}</p>
+                    <div dangerouslySetInnerHTML={{ __html: q.answer }} className="faq-answer"></div>
                   </motion.div>
                 </Accordion.Content>
               </Accordion.Item>
