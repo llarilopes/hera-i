@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 
 const testimonials = [
   {
@@ -95,7 +95,6 @@ export default function Testimonials() {
   const [isMobile, setIsMobile] = useState(
     typeof window !== 'undefined' ? window.innerWidth < 768 : false
   );
-  const containerRef = useRef<HTMLDivElement>(null);
 
   // Responsividade: reinicia ao redimensionar
   useEffect(() => {
@@ -108,26 +107,8 @@ export default function Testimonials() {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  // Efeito slide-down ao mostrar mais
-  useEffect(() => {
-    if (containerRef.current) {
-      const children = Array.from(containerRef.current.children) as HTMLDivElement[];
-      children.forEach((child, idx) => {
-        if (idx < visibleCount) {
-          child.style.maxHeight = child.scrollHeight + 'px';
-          child.style.opacity = '1';
-          child.style.marginBottom = '30px';
-        } else {
-          child.style.maxHeight = '0';
-          child.style.opacity = '0';
-          child.style.marginBottom = '0';
-        }
-      });
-    }
-  }, [visibleCount, isMobile]);
-
   // Acessibilidade: foco no botão
-  const buttonRef = useRef<HTMLButtonElement>(null);
+  const buttonRef = React.createRef<HTMLButtonElement>();
 
   function handleShowMore() {
     setVisibleCount((prev) => Math.min(prev + 1, testimonials.length));
@@ -140,28 +121,27 @@ export default function Testimonials() {
     <section className="testimonials" id="testimonials">
       <div className="container">
         <h2 className="section-title">O que nossos clientes dizem</h2>
-        <div
-          className="testimonials-container"
-          ref={containerRef}
-          style={{
-            display: 'flex',
-            flexDirection: 'column',
-            gap: 0,
-            fontFamily: `'Press Start 2P', cursive`,
-          }}
-        >
-          {testimonials.map((t, idx) => (
+        <div style={{ position: 'relative' }}>
+          <div
+            className="testimonials-container"
+            style={{
+              display: 'flex',
+              flexDirection: 'column',
+              gap: 0,
+              fontFamily: `'Press Start 2P', cursive`,
+              marginBottom: 20,
+            }}
+          >
+          {testimonials.slice(0, visibleCount).map((t, idx) => (
             <div
               key={idx}
               className="testimonial"
               tabIndex={0}
-              aria-hidden={idx >= visibleCount}
               style={{
                 overflow: 'hidden',
                 transition: 'max-height 0.5s cubic-bezier(.4,2,.6,1), opacity 0.5s',
-                maxHeight: idx < visibleCount ? undefined : 0,
-                opacity: idx < visibleCount ? 1 : 0,
-                marginBottom: idx < visibleCount ? 30 : 0,
+                opacity: 1,
+                marginBottom: 30,
                 outline: 'none',
                 fontFamily: `'Press Start 2P', cursive`,
               }}
@@ -170,9 +150,9 @@ export default function Testimonials() {
               <div className="testimonial-author">{t.author}</div>
             </div>
           ))}
-        </div>
-        {visibleCount < testimonials.length && (
-          <div style={{ display: 'flex', justifyContent: 'center', marginTop: 0 }}>
+          </div>
+          {visibleCount < testimonials.length && (
+            <div style={{ display: 'flex', justifyContent: 'center', marginTop: 20 }}>
             <button
               ref={buttonRef}
               className="form-button"
@@ -201,6 +181,7 @@ export default function Testimonials() {
             </button>
           </div>
         )}
+        </div>
       </div>
     </section>
   );
