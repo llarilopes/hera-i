@@ -21,6 +21,18 @@ const FaqAccordion = () => {
   const [voteMap, setVoteMap] = useState<VoteMap>({});
   const [deviceId, setDeviceId] = useState<string>('');
 
+  // Função para ordenar as perguntas por popularidade
+  const sortQuestions = (questions: FaqQuestion[]) => {
+    return [...questions].sort((a, b) => {
+      // Primeiro critério: mais likes no topo
+      if (b.likes !== a.likes) return b.likes - a.likes;
+      // Segundo critério: menos dislikes no topo
+      if (a.dislikes !== b.dislikes) return a.dislikes - b.dislikes;
+      // Terceiro critério: ordem alfabética
+      return a.question.localeCompare(b.question);
+    });
+  };
+
   useEffect(() => {
     let id = localStorage.getItem('deviceId') || '';
     id = id || uuidv4();
@@ -55,7 +67,7 @@ const FaqAccordion = () => {
       }
     ];
     
-    setQuestions(initialQuestions);
+    setQuestions(sortQuestions(initialQuestions));
     
     // Tentar buscar da API com configurações CORS
     fetch('http://localhost:8000/faq/questions', {
@@ -70,7 +82,7 @@ const FaqAccordion = () => {
       .then(res => res.json())
       .then((data: FaqQuestion[]) => {
         if (data && Array.isArray(data)) {
-          setQuestions(data);
+          setQuestions(sortQuestions(data));
         }
       })
       .catch(error => {
@@ -78,28 +90,61 @@ const FaqAccordion = () => {
       });
   }, []);
 
-  const handleVote = (qid: number, reaction: 'like' | 'dislike') => {
-    if (voteMap[qid] === reaction) return;
-    const prevReaction = voteMap[qid];
-    const updatedMap = { ...voteMap, [qid]: reaction };
-    setVoteMap(updatedMap);
-    localStorage.setItem('faqVotes', JSON.stringify(updatedMap));
+  // Função para registrar clique na pergunta
+  const registerClick = (qid: number) => {
+    // Enviar clique para a API
+    fetch('http://localhost:8000/faq/click', {
+      method: 'POST',
+      headers: { 
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+        'Origin': 'http://localhost:3001'
+      },
+      mode: 'cors',
+      body: JSON.stringify({
+        faq_question_id: qid,
+        timestamp: new Date().toISOString(),
+      }),
+    }).catch(error => {
+      console.warn('Erro ao registrar clique na API:', error);
+    });
+  };
 
+  const handleVote = (qid: number, reaction: 'like' | 'dislike') => {
+    // Se já votou igual, não faz nada
+    if (voteMap[qid] === reaction) return;
+
+    // Atualiza o estado local
+    setVoteMap(prev => {
+      const newMap = { ...prev, [qid]: reaction };
+      localStorage.setItem('faqVotes', JSON.stringify(newMap));
+      return newMap;
+    });
+
+    // Atualiza o contador de votos
     setQuestions(prev => {
-      const cloned = prev.map(q => {
+      const updatedQuestions = prev.map(q => {
         if (q.id !== qid) return q;
-        let { likes, dislikes } = q;
-        if (prevReaction === 'like') likes--;        
-        if (prevReaction === 'dislike') dislikes--;  
-        if (reaction === 'like') likes++;
-        if (reaction === 'dislike') dislikes++;
-        return { ...q, likes, dislikes };
+
+        // Se já votou diferente, remove o voto anterior
+        const prevVote = voteMap[qid];
+        if (prevVote && prevVote !== reaction) {
+          return {
+            ...q,
+            [reaction + 's']: q[reaction + 's' as 'likes' | 'dislikes'] + 1,
+            [prevVote + 's']: Math.max(0, q[prevVote + 's' as 'likes' | 'dislikes'] - 1)
+          };
+        }
+
+        // Novo voto
+        return {
+          ...q,
+          [reaction + 's']: q[reaction + 's' as 'likes' | 'dislikes'] + 1
+        };
       });
-      return cloned.sort((a, b) => {
-        if (b.likes !== a.likes) return b.likes - a.likes;
-        if (a.dislikes !== b.dislikes) return a.dislikes - b.dislikes;
-        return 0;
-      });
+      
+      // Ordenar as perguntas após atualizar os votos
+      return sortQuestions(updatedQuestions);
     });
 
     // Tentar enviar voto para a API com configurações CORS
@@ -132,7 +177,10 @@ const FaqAccordion = () => {
             {questions.map(q => (
               <Accordion.Item key={q.id} value={String(q.id)} className="faq-item">
                 <Accordion.Header className="faq-header">
-                  <Accordion.Trigger className="faq-trigger">
+                  <Accordion.Trigger 
+                    className="faq-trigger" 
+                    onClick={() => registerClick(q.id)}
+                  >
                     {q.question}
                   </Accordion.Trigger>
                   <div className="faq-vote-buttons">
