@@ -151,7 +151,7 @@ HTML
                 'clicks'   => 0,
                 'created_at' => '2025-04-30 12:12:00',
                 'updated_at' => '2025-04-30 12:12:00',
-                'question' => 'Vocês trabalham com contratos e emissão de nota fiscal?',
+                'question' => 'A HeRa-i trabalha com contratos e emissão de nota fiscal?',
                 'answer'   => <<<HTML
 <p>Depende da demanda. Em muitos casos, sim — principalmente em projetos formais e contínuos. Mas nem todos os serviços exigem contrato ou emissão de nota fiscal. A HeRa-i se adapta à realidade de cada cliente, mantendo sempre transparência, confiança e profissionalismo. Além disso, exerce trabalhos voluntários atendendo a ONGs e Projetos Sociais de forma filantrópica e altruísta.</p>
 HTML
