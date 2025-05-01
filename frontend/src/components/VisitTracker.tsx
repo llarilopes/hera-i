@@ -101,13 +101,18 @@ const VisitTracker: React.FC = () => {
   useEffect(() => {
     if (!hasInteracted) return;
     
-    // Verificar se o usuário optou por não ver a modal novamente
-    const dontShowExitModal = localStorage.getItem('dontShowExitModal') === 'true';
+    // Função para verificar se o usuário optou por não ver a modal novamente
+    const checkDontShowExitModal = () => {
+      return localStorage.getItem('dontShowExitModal') === 'true';
+    };
     
     // Se o usuário optou por não ver a modal, não adicionar o listener
-    if (dontShowExitModal) return;
+    if (checkDontShowExitModal()) return;
     
     const handleMouseLeave = (e: MouseEvent) => {
+      // Verificar novamente se o usuário optou por não ver a modal
+      if (checkDontShowExitModal()) return;
+      
       // Detectar quando o mouse sai pela parte superior da página
       if (e.clientY <= 0) {
         setExitIntent(true);
