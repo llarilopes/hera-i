@@ -4,14 +4,25 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\SiteVisit;
+use Illuminate\Support\Carbon;
 use Laravel\Lumen\Routing\Controller as BaseController;
 
 class VisitController extends BaseController
 {
     public function registerStart(Request $request)
     {
+        // Capturar dados do request
         $ip = $request->ip();
         $userAgent = $request->header('User-Agent');
+        $deviceId = $request->input('device_id');
+        $referrer = $request->input('referrer', 'direct');
+        
+        // Log para depuração
+        \Log::info('Registrando visita:', [
+            'device_id' => $deviceId,
+            'ip' => $ip,
+            'referrer' => $referrer
+        ]);
         
         // Detectar sistema operacional, navegador e tipo de dispositivo
         $os = $this->detectOS($userAgent);
@@ -20,13 +31,15 @@ class VisitController extends BaseController
         $isBot = $this->isBot($userAgent);
         
         $visit = SiteVisit::create([
+            'device_id' => $deviceId,
             'ip_address' => $ip,
             'user_agent' => $userAgent,
             'os' => $os,
             'browser' => $browser,
             'device_type' => $deviceType,
+            'referrer' => $referrer,
             'is_bot' => $isBot,
-            'entry_time' => now()
+            'entry_time' => Carbon::now()
         ]);
         
         return response()->json([
@@ -42,7 +55,7 @@ class VisitController extends BaseController
         ]);
         
         $visit = SiteVisit::find($request->visit_id);
-        $visit->exit_time = now();
+        $visit->exit_time = Carbon::now();
         $visit->save();
         
         return response()->json(['success' => true]);
@@ -95,6 +108,44 @@ class VisitController extends BaseController
         }
         
         return 'desktop';
+    }
+
+    public function registerTimeSpent(Request $request)
+    {
+        $this->validate($request, [
+            'device_id' => 'required|string',
+            'time_spent_seconds' => 'required|integer',
+            'timestamp' => 'required|string'
+        ]);
+        
+        // Buscar visita pelo device_id ou criar uma nova se não existir
+        $visit = SiteVisit::where('device_id', $request->device_id)
+                        ->orderBy('created_at', 'desc')
+                        ->first();
+                        
+        if (!$visit) {
+            // Se não encontrou uma visita, cria uma nova
+            $visit = new SiteVisit();
+            $visit->device_id = $request->device_id;
+            $visit->entry_time = Carbon::now();
+            $visit->user_agent = $request->header('User-Agent');
+            $visit->ip_address = $request->ip();
+            $visit->os = $this->detectOS($request->header('User-Agent'));
+            $visit->browser = $this->detectBrowser($request->header('User-Agent'));
+            $visit->device_type = $this->detectDeviceType($request->header('User-Agent'));
+            $visit->is_bot = $this->isBot($request->header('User-Agent'));
+        }
+        
+        // Atualizar o tempo de permanência
+        $visit->time_spent_seconds = $request->time_spent_seconds;
+        $visit->exit_time = Carbon::now();
+        $visit->save();
+        
+        return response()->json([
+            'success' => true,
+            'visit_id' => $visit->id,
+            'time_spent_seconds' => $visit->time_spent_seconds
+        ]);
     }
     
     private function isBot($userAgent)

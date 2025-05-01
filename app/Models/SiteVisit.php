@@ -16,6 +16,9 @@ class SiteVisit extends Model
         "state",
         "is_bot",
         "entry_time",
-        "exit_time"
+        "exit_time",
+        "device_id",
+        "time_spent_seconds",
+        "referrer"
     ];
 }
