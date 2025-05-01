@@ -90,22 +90,17 @@ const INITIAL_COUNT = 2;
 export default function Testimonials() {
   // Inicialização com valores fixos para SSR
   const [visibleCount, setVisibleCount] = useState(INITIAL_COUNT);
-  const [isMobile, setIsMobile] = useState(false);
+  
 
   // Detecta mobile/desktop e ajusta a contagem de depoimentos visíveis
   useEffect(() => {
     // Detecta o tamanho inicial da tela
     const checkMobile = () => window.innerWidth < 768;
     const initialMobile = checkMobile();
-    
-    // Atualiza os estados com base na detecção real do dispositivo
-    setIsMobile(initialMobile);
     setVisibleCount(initialMobile ? 1 : 2);
-    
     // Configura o listener para redimensionamento
     function handleResize() {
       const mobile = checkMobile();
-      setIsMobile(mobile);
       setVisibleCount(mobile ? 1 : 2);
     }
     

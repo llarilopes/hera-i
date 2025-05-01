@@ -5,15 +5,14 @@ const VisitTracker: React.FC = () => {
   const [visitStartTime, setVisitStartTime] = useState<Date | null>(null);
   const [showExitModal, setShowExitModal] = useState(false);
   const [hasInteracted, setHasInteracted] = useState(false);
-  const [deviceId, setDeviceId] = useState('');
-  const [exitIntent, setExitIntent] = useState(false);
+  
 
   // Inicializar rastreamento
   useEffect(() => {
     // Gerar ou recuperar ID de dispositivo
     const storedDeviceId = localStorage.getItem('deviceId') || crypto.randomUUID();
     localStorage.setItem('deviceId', storedDeviceId);
-    setDeviceId(storedDeviceId);
+    
     
     // Registrar início da visita
     const startTime = new Date();
@@ -40,7 +39,7 @@ const VisitTracker: React.FC = () => {
     .then(response => {
       return response;
     })
-    .catch(error => {
+    .catch(() => {
       // Silenciar erro para não afetar a experiência do usuário
     });
 
@@ -70,7 +69,7 @@ const VisitTracker: React.FC = () => {
         .then(response => {
           return response;
         })
-        .catch(error => {
+        .catch(() => {
           // Silenciar erro para não afetar a experiência do usuário
         });
       }
@@ -95,7 +94,7 @@ const VisitTracker: React.FC = () => {
       clearInterval(intervalId);
       registerTimeSpent(); // Registrar ao desmontar o componente
     };
-  }, []);
+  }, [visitStartTime]);
 
   // Detectar intenção de saída
   useEffect(() => {
@@ -115,7 +114,7 @@ const VisitTracker: React.FC = () => {
       
       // Detectar quando o mouse sai pela parte superior da página
       if (e.clientY <= 0) {
-        setExitIntent(true);
+        
         setShowExitModal(true);
       }
     };
