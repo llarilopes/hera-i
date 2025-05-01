@@ -26,5 +26,5 @@ $router->post('/faq/vote', 'FaqController@registerVote');
 $router->post('/faq/click', 'FaqController@registerClick');
 
 // Rotas para visitas
-$router->post('/visits/start', 'VisitController@registerStart');
-$router->post('/visits/end', 'VisitController@registerEnd');
+$router->post('/visit/register', 'VisitController@registerStart');
+$router->post('/visit/time', 'VisitController@registerTimeSpent');
