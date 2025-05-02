@@ -6,10 +6,6 @@ import Footer from '@/components/Footer';
 import FaqAccordion, { FaqQuestion } from '@/components/FaqAccordion';
 import FaqSearchBox from '@/components/FaqSearchBox';
 
-interface FaqPageProps {
-  data: FaqQuestion[];
-}
-
 export default function FaqPage() {
   const router = useRouter();
   const targetId = Array.isArray(router.query.id) ? router.query.id[0] : router.query.id;

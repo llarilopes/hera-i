@@ -185,17 +185,20 @@ const FaqSearchBox = forwardRef<HTMLInputElement>((props, ref) => {
           
           {query.length >= 2 && results.length === 0 && !isLoading && (
             <div className="absolute z-50 mt-2 w-full rounded-lg border-2 border-gray-200 p-4 shadow-xl" style={{ backgroundColor: '#ffffff' }}>
-              <p className="text-center text-gray-500" style={{ backgroundColor: '#ffffff' }}>Nenhum resultado encontrado para "{query}"</p>
+              <p className="text-center text-gray-500" style={{ backgroundColor: '#ffffff' }}>Nenhum resultado encontrado para &ldquo;{query}&rdquo;</p>
             </div>
           )}
         </Combobox>
         
         <div className="mt-4 text-center text-sm text-gray-500" style={{ marginTop: '10px' }}>
-          <p>Experimente buscar por: "Ravi", "tecnologias", "equipe"</p>
+          <p>Experimente buscar por: &ldquo;Ravi&rdquo;, &ldquo;tecnologias&rdquo;, &ldquo;equipe&rdquo;</p>
         </div>
       </div>
     </div>
   );
 });
+
+// Adicionar displayName para resolver o erro react/display-name
+FaqSearchBox.displayName = 'FaqSearchBox';
 
 export default FaqSearchBox;
