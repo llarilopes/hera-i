@@ -33,13 +33,33 @@ export default function FaqPage() {
     fetchData();
   }, []);
 
+  // Ref para controlar se já tentamos rolar até a pergunta
+  const hasScrolledRef = useRef(false);
+
+  useEffect(() => {
+    // Resetar o flag quando o targetId mudar
+    hasScrolledRef.current = false;
+  }, [targetId]);
+
   useEffect(() => {
     // Esperar os dados serem carregados e o componente ser renderizado antes de tentar rolar até a pergunta
-    if (targetId && data.length > 0 && scrollRef.current) {
-      // Pequeno delay para garantir que o DOM está atualizado
+    if (targetId && data.length > 0 && !hasScrolledRef.current) {
+      // Marcar que já tentamos rolar
+      hasScrolledRef.current = true;
+      
+      // Usar um delay maior para garantir que o DOM está completamente renderizado
       setTimeout(() => {
-        scrollRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }, 300);
+        // Tentar encontrar o elemento pelo ID primeiro
+        const targetElement = document.getElementById(`faq-item-${targetId}`);
+        if (targetElement) {
+          targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          console.log(`Rolando até a pergunta ID ${targetId}`);
+        } else if (scrollRef.current) {
+          // Fallback para o scrollRef
+          scrollRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          console.log(`Usando scrollRef para rolar até a pergunta ID ${targetId}`);
+        }
+      }, 500); // Delay maior para garantir que o DOM está pronto
     }
   }, [targetId, data]);
 

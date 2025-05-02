@@ -39,7 +39,16 @@ const FaqAccordion: React.FC<FaqAccordionProps> = ({ data, defaultOpenId, scroll
 
   useEffect(() => {
     setQuestions(sortQuestions(data));
-  }, [data]);
+    
+    // Garantir que o defaultOpenId seja aplicado corretamente
+    if (defaultOpenId && data.length > 0) {
+      // Verificar se o ID existe nos dados
+      const questionExists = data.some(q => q.id.toString() === defaultOpenId);
+      if (!questionExists) {
+        console.warn(`Pergunta com ID ${defaultOpenId} não encontrada nos dados`);
+      }
+    }
+  }, [data, defaultOpenId]);
   const [voteMap, setVoteMap] = useState<VoteMap>({});
   const [deviceId, setDeviceId] = useState<string>('');
 
@@ -52,6 +61,12 @@ const FaqAccordion: React.FC<FaqAccordionProps> = ({ data, defaultOpenId, scroll
     const saved = localStorage.getItem('faqVotes');
     if (saved) setVoteMap(JSON.parse(saved));
   }, []);
+
+  // Estado controlado para item aberto
+  const [openId, setOpenId] = useState<string | undefined>(defaultOpenId);
+  useEffect(() => {
+    setOpenId(defaultOpenId);
+  }, [defaultOpenId]);
 
   // Função para registrar clique na pergunta
   const registerClick = (qid: number) => {
@@ -136,7 +151,7 @@ const FaqAccordion: React.FC<FaqAccordionProps> = ({ data, defaultOpenId, scroll
       <div className="container">
         <h2 className="section-title">Perguntas Frequentes</h2>
         <div className="faq-container">
-          <Accordion.Root type="single" collapsible defaultValue={defaultOpenId} className="accordion-container">
+          <Accordion.Root type="single" collapsible value={openId} onValueChange={setOpenId} className="accordion-container">
             {questions.length === 0 && (
               <div style={{textAlign: 'center', color: '#888', margin: '40px 0'}}>Nenhuma pergunta encontrada.</div>
             )}
