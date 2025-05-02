@@ -149,7 +149,6 @@ const FaqAccordion: React.FC<FaqAccordionProps> = ({ data, defaultOpenId, scroll
   return (
     <section id="faq" className="faq">
       <div className="container">
-        <h2 className="section-title">Perguntas Frequentes</h2>
         <div className="faq-container">
           <Accordion.Root type="single" collapsible value={openId} onValueChange={setOpenId} className="accordion-container">
             {questions.length === 0 && (

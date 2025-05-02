@@ -74,9 +74,6 @@ export default function FaqPage() {
       <Header />
       <section className="section faq" style={{ padding: '142px 0' }}>
         <div className="container mx-auto max-w-4xl px-4">
-          <h2 className="section-title text-3xl font-bold text-purple-800 text-center mb-10">Perguntas Frequentes</h2>
-          <p className="text-gray-600 text-center mb-12">Encontre respostas para as dúvidas mais comuns sobre nossos serviços e soluções.</p>
-
           <div className="mb-8">
             <FaqSearchBox ref={faqInputRef} />
           </div>
