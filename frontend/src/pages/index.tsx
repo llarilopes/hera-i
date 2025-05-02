@@ -27,6 +27,15 @@ export default function Home() {
     const sections = document.querySelectorAll('.about, .services, .cases, .testimonials, .faq, .contact');
     const anchors = document.querySelectorAll('a[href^="#"]');
     const pixelBorders = document.querySelectorAll('.pixel-border');
+    
+    // Verificar se há links para a seção FAQ e adicionar comportamento de foco
+    const faqLinks = document.querySelectorAll('a[href="/#faq"]');
+    faqLinks.forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        scrollToFaqAndFocus();
+      });
+    });
 
     function checkScroll() {
       const triggerBottom = window.innerHeight * 0.8;
@@ -37,10 +46,15 @@ export default function Home() {
       });
     }
 
+    // Tratamento para outros links de âncora que não são FAQ
     anchors.forEach((anchor) => {
+      const href = (anchor as HTMLAnchorElement).getAttribute('href');
+      // Pular os links de FAQ que já foram tratados acima
+      if (href === '#faq' || href === '/#faq') return;
+      
       anchor.addEventListener('click', (e) => {
         e.preventDefault();
-        const targetId = (anchor as HTMLAnchorElement).getAttribute('href');
+        const targetId = href;
         const targetElement = document.querySelector(targetId!);
         if (targetElement) {
           window.scrollTo({ top: (targetElement as HTMLElement).offsetTop - 80, behavior: 'smooth' });
