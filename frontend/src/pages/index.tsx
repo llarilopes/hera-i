@@ -39,13 +39,14 @@ export default function Home() {
     });
     
     // Adicionar tratamento especial para os links do menu principal
-    document.querySelectorAll('header a[href*="faq"], footer a[href*="faq"]').forEach(link => {
+    // Capturar todos os links que contêm "faq" no href, incluindo os do menu superior
+    document.querySelectorAll('header a[href*="faq"], header .nav-links a[href*="faq"], footer a[href*="faq"]').forEach(link => {
       // Verificar se estamos na página inicial
       if (window.location.pathname === '/' || window.location.pathname === '') {
         link.addEventListener('click', (e) => {
           // Apenas prevenir o comportamento padrão se o link for para a âncora na mesma página
           const href = (link as HTMLAnchorElement).getAttribute('href');
-          if (href && (href === '#faq' || href === '/#faq')) {
+          if (href && (href === '#faq' || href === '/#faq' || href.includes('#faq'))) {
             e.preventDefault();
             scrollToFaqAndFocus();
           }
