@@ -1,5 +1,6 @@
 const path = require('path');
 
+/** @type {import('next').NextConfig} */
 module.exports = {
   images: {
     unoptimized: true,
@@ -8,13 +9,10 @@ module.exports = {
     config.resolve.alias['@'] = path.resolve(__dirname, 'src');
     return config;
   },
-  // Configuração para melhorar o HMR
-  webpackDevMiddleware: (config) => {
-    // Reduz o número de mensagens no console
-    config.stats = 'minimal';
-    return config;
+  // Configurações experimentais
+  experimental: {
+    // Manter swcMinify desativado, mas dentro de experimental
+    swcMinify: false
   },
-  // Desativar algumas otimizações que podem causar problemas com HMR
-  swcMinify: false,
   reactStrictMode: true,
 };
