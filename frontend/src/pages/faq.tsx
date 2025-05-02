@@ -52,12 +52,15 @@ export default function FaqPage() {
         // Tentar encontrar o elemento pelo ID primeiro
         const targetElement = document.getElementById(`faq-item-${targetId}`);
         if (targetElement) {
-          targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
-          console.log(`Rolando até a pergunta ID ${targetId}`);
+          const headerOffset = 100;
+          const elementPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerOffset;
+          window.scrollTo({ top: elementPosition, behavior: 'smooth' });
+          console.log(`Rolando até a pergunta ID ${targetId} com offset de ${headerOffset}px`);
         } else if (scrollRef.current) {
-          // Fallback para o scrollRef
-          scrollRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
-          console.log(`Usando scrollRef para rolar até a pergunta ID ${targetId}`);
+          const headerOffset = 100;
+          const elementPosition = scrollRef.current.getBoundingClientRect().top + window.pageYOffset - headerOffset;
+          window.scrollTo({ top: elementPosition, behavior: 'smooth' });
+          console.log(`Usando scrollRef para rolar até a pergunta ID ${targetId} com offset de ${headerOffset}px`);
         }
       }, 500); // Delay maior para garantir que o DOM está pronto
     }

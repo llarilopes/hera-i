@@ -162,6 +162,7 @@ const FaqAccordion: React.FC<FaqAccordionProps> = ({ data, defaultOpenId, scroll
                 id={`faq-item-${q.id}`}
                 ref={q.id.toString() === defaultOpenId ? scrollRef : undefined}
                 className="faq-item"
+                style={{ scrollMarginTop: '190px' }}
               >
                 <Accordion.Header className="faq-header">
                   <Accordion.Trigger 
