@@ -144,6 +144,7 @@ const FaqAccordion: React.FC<FaqAccordionProps> = ({ data, defaultOpenId, scroll
               <Accordion.Item
                 key={q.id}
                 value={String(q.id)}
+                id={`faq-item-${q.id}`}
                 ref={q.id.toString() === defaultOpenId ? scrollRef : undefined}
                 className="faq-item"
               >

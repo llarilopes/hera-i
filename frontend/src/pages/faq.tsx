@@ -18,12 +18,6 @@ export default function FaqPage() {
   const [data, setData] = useState<FaqQuestion[]>([]);
 
   useEffect(() => {
-    // Dar foco automaticamente ao campo de busca quando a página carregar
-    setTimeout(() => {
-      if (faqInputRef.current) {
-        faqInputRef.current.focus();
-      }
-    }, 300); // Pequeno delay para garantir que o componente está montado
     async function fetchData() {
       try {
         const res = await fetch('/api/faq/questions');
@@ -40,10 +34,14 @@ export default function FaqPage() {
   }, []);
 
   useEffect(() => {
-    if (scrollRef.current) {
-      scrollRef.current.scrollIntoView({ behavior: 'smooth' });
+    // Esperar os dados serem carregados e o componente ser renderizado antes de tentar rolar até a pergunta
+    if (targetId && data.length > 0 && scrollRef.current) {
+      // Pequeno delay para garantir que o DOM está atualizado
+      setTimeout(() => {
+        scrollRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 300);
     }
-  }, [targetId]);
+  }, [targetId, data]);
 
   return (
     <>

@@ -29,12 +29,28 @@ export default function Home() {
     const pixelBorders = document.querySelectorAll('.pixel-border');
     
     // Verificar se há links para a seção FAQ e adicionar comportamento de foco
-    const faqLinks = document.querySelectorAll('a[href="/#faq"]');
+    // Seleciona tanto links com href="/#faq" quanto href="#faq"
+    const faqLinks = document.querySelectorAll('a[href="/#faq"], a[href="#faq"]');
     faqLinks.forEach(link => {
       link.addEventListener('click', (e) => {
         e.preventDefault();
         scrollToFaqAndFocus();
       });
+    });
+    
+    // Adicionar tratamento especial para os links do menu principal
+    document.querySelectorAll('header a[href*="faq"], footer a[href*="faq"]').forEach(link => {
+      // Verificar se estamos na página inicial
+      if (window.location.pathname === '/' || window.location.pathname === '') {
+        link.addEventListener('click', (e) => {
+          // Apenas prevenir o comportamento padrão se o link for para a âncora na mesma página
+          const href = (link as HTMLAnchorElement).getAttribute('href');
+          if (href && (href === '#faq' || href === '/#faq')) {
+            e.preventDefault();
+            scrollToFaqAndFocus();
+          }
+        });
+      }
     });
 
     function checkScroll() {
