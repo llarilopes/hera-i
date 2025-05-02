@@ -856,6 +856,11 @@ footer {
 }
 
 /* FAQ Section Styles */
+.busca-faq{
+    padding: 10px;
+    font-size: 17px;
+}
+
 .faq {
     padding: 80px 0;
     background-color: var(--bg-light);

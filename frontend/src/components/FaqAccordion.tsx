@@ -16,22 +16,32 @@ interface VoteMap {
   [key: number]: 'like' | 'dislike';
 }
 
-const FaqAccordion = () => {
-  const [questions, setQuestions] = useState<FaqQuestion[]>([]);
+interface FaqAccordionProps {
+  data: FaqQuestion[];
+  defaultOpenId?: string;
+  scrollRef?: React.Ref<HTMLDivElement>;
+}
+
+// Função para ordenar as perguntas por popularidade
+const sortQuestions = (questions: FaqQuestion[]) => {
+  return [...questions].sort((a, b) => {
+    // Primeiro critério: mais likes no topo
+    if (b.likes !== a.likes) return b.likes - a.likes;
+    // Segundo critério: menos dislikes no topo
+    if (a.dislikes !== b.dislikes) return a.dislikes - b.dislikes;
+    // Terceiro critério: ordem alfabética
+    return a.question.localeCompare(b.question);
+  });
+};
+
+const FaqAccordion: React.FC<FaqAccordionProps> = ({ data, defaultOpenId, scrollRef }) => {
+  const [questions, setQuestions] = useState<FaqQuestion[]>(() => sortQuestions(data));
+
+  useEffect(() => {
+    setQuestions(sortQuestions(data));
+  }, [data]);
   const [voteMap, setVoteMap] = useState<VoteMap>({});
   const [deviceId, setDeviceId] = useState<string>('');
-
-  // Função para ordenar as perguntas por popularidade
-  const sortQuestions = (questions: FaqQuestion[]) => {
-    return [...questions].sort((a, b) => {
-      // Primeiro critério: mais likes no topo
-      if (b.likes !== a.likes) return b.likes - a.likes;
-      // Segundo critério: menos dislikes no topo
-      if (a.dislikes !== b.dislikes) return a.dislikes - b.dislikes;
-      // Terceiro critério: ordem alfabética
-      return a.question.localeCompare(b.question);
-    });
-  };
 
   useEffect(() => {
     let id = localStorage.getItem('deviceId') || '';
@@ -41,53 +51,6 @@ const FaqAccordion = () => {
 
     const saved = localStorage.getItem('faqVotes');
     if (saved) setVoteMap(JSON.parse(saved));
-
-    // Dados iniciais para exibir enquanto a API não responde
-    const initialQuestions: FaqQuestion[] = [
-      {
-        id: 1,
-        question: 'Por que a HeRa-i não tem grande presença nas redes sociais?',
-        answer: 'A HeRa-i valoriza mais o relacionamento com os clientes do que a autopromoção. Por isso, prefere focar totalmente em cada projeto.',
-        likes: 0,
-        dislikes: 0
-      },
-      {
-        id: 2,
-        question: 'Quantas empresas a HeRa-i já atendeu?',
-        answer: 'Embora não haja um registro formal de todos os clientes, principalmente dos primeiros anos, estima-se que a HeRa-i já tenha prestado serviços para cerca de 100 empresas.',
-        likes: 0,
-        dislikes: 0
-      },
-      {
-        id: 3,
-        question: 'De onde são os clientes atendidos?',
-        answer: 'A HeRa-i possui um histórico de atendimento a empresas em diversos estados e cidades brasileiras, além de clientes internacionais.',
-        likes: 0,
-        dislikes: 0
-      }
-    ];
-    
-    setQuestions(sortQuestions(initialQuestions));
-    
-    // Tentar buscar da API com configurações CORS
-    fetch('http://localhost:8000/faq/questions', {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json',
-        'Origin': 'http://localhost:3001'
-      },
-      mode: 'cors'
-    })
-      .then(res => res.json())
-      .then((data: FaqQuestion[]) => {
-        if (data && Array.isArray(data)) {
-          setQuestions(sortQuestions(data));
-        }
-      })
-      .catch(error => {
-        console.warn('Erro ao buscar perguntas da API, usando dados iniciais:', error);
-      });
   }, []);
 
   // Função para registrar clique na pergunta
@@ -173,9 +136,17 @@ const FaqAccordion = () => {
       <div className="container">
         <h2 className="section-title">Perguntas Frequentes</h2>
         <div className="faq-container">
-          <Accordion.Root type="single" collapsible className="accordion-container">
+          <Accordion.Root type="single" collapsible defaultValue={defaultOpenId} className="accordion-container">
+            {questions.length === 0 && (
+              <div style={{textAlign: 'center', color: '#888', margin: '40px 0'}}>Nenhuma pergunta encontrada.</div>
+            )}
             {questions.map(q => (
-              <Accordion.Item key={q.id} value={String(q.id)} className="faq-item">
+              <Accordion.Item
+                key={q.id}
+                value={String(q.id)}
+                ref={q.id.toString() === defaultOpenId ? scrollRef : undefined}
+                className="faq-item"
+              >
                 <Accordion.Header className="faq-header">
                   <Accordion.Trigger 
                     className="faq-trigger" 

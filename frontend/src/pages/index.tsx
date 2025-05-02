@@ -5,11 +5,24 @@ import About from '@/components/About';
 import Services from '@/components/Services';
 import Cases from '@/components/Cases';
 import Testimonials from '@/components/Testimonials';
-import FaqAccordion from '@/components/FaqAccordion';
+import React, { useRef } from 'react';
+import FaqSearchBox from '../components/FaqSearchBox';
 import ContactForm from '@/components/ContactForm';
 import Footer from '@/components/Footer';
 
 export default function Home() {
+  const faqInputRef = useRef<HTMLInputElement>(null);
+  const scrollToFaqAndFocus = (e?: React.MouseEvent) => {
+    e?.preventDefault();
+    const faqSection = document.getElementById('faq');
+    if (faqSection) {
+      faqSection.scrollIntoView({ behavior: 'smooth' });
+      setTimeout(() => {
+        faqInputRef.current?.focus();
+      }, 400);
+    }
+  };
+
   useEffect(() => {
     const sections = document.querySelectorAll('.about, .services, .cases, .testimonials, .faq, .contact');
     const anchors = document.querySelectorAll('a[href^="#"]');
@@ -61,7 +74,11 @@ export default function Home() {
       <Services />
       <Cases />
       <Testimonials />
-      <FaqAccordion />
+      <section id="faq" className="w-full flex flex-col items-center justify-center py-12" style={{ scrollMarginTop: '100px', padding: '100px 0' }}>
+        <div className="container mx-auto px-4">
+          <FaqSearchBox ref={faqInputRef} />
+        </div>
+      </section>
       <ContactForm />
       <Footer />
     </>

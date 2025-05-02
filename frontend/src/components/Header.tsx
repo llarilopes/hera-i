@@ -73,7 +73,7 @@ export default function Header() {
               <li><Link href="/#about">Quem Somos</Link></li>
               <li><Link href="/#services">Serviços</Link></li>
               <li><Link href="/#cases">Cases</Link></li>
-              <li><Link href="/#faq">FAQ</Link></li>
+              <li><Link href="/#faq">FAQ-i</Link></li>
             </ul>
           )}
           
