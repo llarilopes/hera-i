@@ -164,7 +164,7 @@ const VisitTracker: React.FC = () => {
             'Accept': 'application/json'
           },
           mode: 'cors',
-          credentials: 'include',
+          credentials: 'omit',
           body: JSON.stringify(visitData)
         });
       } catch (error) {
@@ -221,7 +221,7 @@ const VisitTracker: React.FC = () => {
             'Accept': 'application/json'
           },
           mode: 'cors',
-          credentials: 'include',
+          credentials: 'omit',
           body: JSON.stringify(timeData)
         });
       } catch (error) {
@@ -255,7 +255,7 @@ const VisitTracker: React.FC = () => {
           timestamp: endTime.toISOString()
         };
         
-        const apiUrl = `${window.location.origin}${getApiBaseUrl()}/visit/time`;
+        const apiUrl = `${getApiBaseUrl()}/visit/time`;
         
         if (TRACKING_CONFIG.DEBUG) {
           console.log('Enviando beacon:', apiUrl, timeData);
