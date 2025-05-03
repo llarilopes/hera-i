@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useCallback, useRef, forwardRef, useImperativeHandle } from 'react';
 import { useRouter } from 'next/router';
 import { Combobox } from '@headlessui/react';
+import { API_BASE_URL } from '@/config';
 
 interface FaqQuestion {
   id: number;
@@ -26,7 +27,7 @@ const FaqSearchBox = forwardRef<HTMLInputElement>((props, ref) => {
     async function loadQuestions() {
       try {
         setIsLoading(true);
-        const res = await fetch(`/api/faq/questions`);
+        const res = await fetch(`${API_BASE_URL}/faq/questions`);
         if (res.ok) {
           const questions: FaqQuestion[] = await res.json();
           setAllQuestions(questions);

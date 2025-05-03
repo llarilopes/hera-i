@@ -3,6 +3,7 @@ import { ThumbsUp, ThumbsDown } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
+import { API_BASE_URL } from '@/config';
 
 export interface FaqQuestion {
   id: number;
@@ -71,7 +72,7 @@ const FaqAccordion: React.FC<FaqAccordionProps> = ({ data, defaultOpenId, scroll
   // Função para registrar clique na pergunta
   const registerClick = (qid: number) => {
     // Enviar clique para a API
-    fetch('http://localhost:8000/faq/click', {
+    fetch(`${API_BASE_URL}/faq/click`, {
       method: 'POST',
       headers: { 
         'Content-Type': 'application/json',
@@ -126,7 +127,7 @@ const FaqAccordion: React.FC<FaqAccordionProps> = ({ data, defaultOpenId, scroll
     });
 
     // Tentar enviar voto para a API com configurações CORS
-    fetch('http://localhost:8000/faq/vote', {
+    fetch(`${API_BASE_URL}/faq/vote`, {
       method: 'POST',
       headers: { 
         'Content-Type': 'application/json',

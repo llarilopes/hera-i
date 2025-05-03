@@ -1,4 +1,5 @@
 import { useRouter } from 'next/router';
+import { API_BASE_URL } from '@/config';
 import React, { useState, useEffect, useRef } from 'react';
 import Head from 'next/head';
 import Header from '@/components/Header';
@@ -16,7 +17,7 @@ export default function FaqPage() {
   useEffect(() => {
     async function fetchData() {
       try {
-        const res = await fetch('/api/faq/questions');
+        const res = await fetch(`${API_BASE_URL}/faq/questions`);
         if (!res.ok) throw new Error('Erro ao buscar dados do FAQ');
         const json = await res.json();
         setData(json);
