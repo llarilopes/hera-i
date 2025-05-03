@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "postbuild": "echo 'postbuild: nada a copiar para .next/server/chunks (output export)', true",
     "export": "next build",
     "start": "next start",
     "lint": "next lint"

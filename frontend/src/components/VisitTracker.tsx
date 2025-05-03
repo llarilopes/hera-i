@@ -15,14 +15,28 @@ const TRACKING_CONFIG = {
   DEBUG: true
 };
 
-// Função para obter a URL base da API
+// Função para obter a URL base da API de forma que funcione em dev (proxy) e em build estático
 const getApiBaseUrl = (): string => {
-  // Usar variável de ambiente ou fallback para o backend em Docker
-  const apiUrl = process.env.NEXT_PUBLIC_API_URL || '/api';
-  if (TRACKING_CONFIG.DEBUG) {
-    console.log('API Base URL:', apiUrl);
+  // 1) Quando executando no browser em localhost, sempre usar o proxy `/api`
+  if (typeof window !== 'undefined') {
+    const host = window.location.hostname;
+    if (host === 'localhost' || host === '127.0.0.1') {
+      if (TRACKING_CONFIG.DEBUG) console.log('API Base URL (dev proxy): /api');
+      return '/api';
+    }
   }
-  return apiUrl;
+
+  // 2) Caso exista variável de ambiente, usar (útil em produção e em SSR)
+  const envUrl = process.env.NEXT_PUBLIC_BACKEND_URL;
+  if (envUrl && envUrl.trim() !== '') {
+    if (TRACKING_CONFIG.DEBUG) console.log('API Base URL (env):', envUrl);
+    return envUrl;
+  }
+
+  // 3) Fallback padrão para produção
+  const prodUrl = 'https://api.hera-i.com.br';
+  if (TRACKING_CONFIG.DEBUG) console.log('API Base URL (fallback prod):', prodUrl);
+  return prodUrl;
 };
 
 // Função para fazer requisições com retry e backoff exponencial
