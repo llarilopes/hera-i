@@ -41,13 +41,6 @@ const CASES = [
     image_logo: '/imgs/cases/cecon-mg.png',
   },
   {
-    title: 'AcessoWeb',
-    tooltip: 'Desenvolvido Sistemas e WebSites',
-    year: '2016',
-    link: 'https://www.google.com/search?q=AcessoWeb+empresa',
-    image_logo: '/imgs/cases/acessoweb.png',
-  },
-  {
     title: 'Feira Shop',
     tooltip: 'Desenvolvido Sistemas e WebSites e E-commerce',
     year: '2016-2017',
