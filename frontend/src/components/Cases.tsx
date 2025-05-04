@@ -2,6 +2,7 @@ import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { useRef, useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
+import Image from 'next/image';
 
 const CASES = [
   {
@@ -205,11 +206,13 @@ export default function Cases() {
                 viewport={{ once: true }}
                 className="w-full h-full block bg-white rounded-xl overflow-hidden shadow-md border-2 border-gray-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
               >
-                <div className="card-image">
-                  <img 
-                    src={c.image_logo} 
-                    alt={c.title} 
-                    className="w-full h-full object-contain p-4" 
+                <div className="card-image relative">
+                  <Image
+                    src={c.image_logo}
+                    alt={c.title}
+                    fill
+                    sizes="(max-width: 768px) 100vw, 300px"
+                    className="object-contain p-4"
                   />
                 </div>
                 <div className="p-4 flex flex-col items-center justify-center">

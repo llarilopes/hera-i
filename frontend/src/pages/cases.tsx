@@ -4,6 +4,7 @@ import Link from 'next/link';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 
 // Compartilhamos o mesmo array de cases usado no componente Cases.tsx
 const CASES = [
@@ -296,11 +297,13 @@ export default function CasesPage() {
                     <span className="tooltip-arrow"></span>
                   </div>
                 </div>
-                <div className="card-image">
-                  <img 
-                    src={c.image_logo} 
-                    alt={c.title} 
-                    className="w-full h-full object-contain p-4" 
+                <div className="card-image relative">
+                  <Image
+                    src={c.image_logo}
+                    alt={c.title}
+                    fill
+                    sizes="(max-width: 768px) 100vw, 300px"
+                    className="object-contain p-4"
                   />
                 </div>
                 <div className="p-4">
