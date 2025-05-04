@@ -15,7 +15,7 @@ export default function About() {
           <a href="https://www.linkedin.com/in/mrgoose/" className="founder pixel-border" target="_blank" rel="noopener noreferrer">
             <Image src="/imgs/mrgoose.jpg" alt="Mr.Goose" width={150} height={150} />
             <h3>MR.GOOSE</h3>
-            <p>Programador e Desenvolvedor desde 1998 e entusiasta da Tecnologia desde 1994</p>
+            <p>Programador e Desenvolvedor desde 1998 e entusiasta da Tecnologia desde 1994, é hoje um Maestro de Inteligência Artificial</p>
           </a>
           <a href="https://www.linkedin.com/in/larisselopes/" className="founder pixel-border" target="_blank" rel="noopener noreferrer">
             <Image src="/imgs/larilopes.jpg" alt="Lari Lopes" width={150} height={150} />

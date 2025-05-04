@@ -30,7 +30,7 @@ export default function Services() {
               <i className="fas fa-chart-line"></i>
             </div>
             <h3 className="service-title">Consultoria Digital</h3>
-            <p className="service-desc">Estratégias de SEO, mídia paga, Análise e otimização de negócios digitais, com estratégias personalizadas para maximizar resultados.</p>
+            <p className="service-desc">Automação de processos, Estratégias de SEO, mídia paga, Análise e otimização de negócios digitais, com estratégias personalizadas para maximizar resultados.</p>
           </div>
         </div>
       </div>

@@ -5,53 +5,109 @@ import Link from 'next/link';
 
 const CASES = [
   {
-    title: 'Petrobras',
-    tooltip: 'Projeto SEGUP via EDGE/UFAL',
-    year: '2024-2025',
-    link: 'https://www.google.com/',
-    image_logo: '/imgs/mascotes.jpeg',
+    title: 'S.O.S Computadores',
+    tooltip: 'Consultoria',
+    year: '1998-1999',
+    link: 'https://www.sos.com.br/',
+    image_logo: '/imgs/cases/S.O.S-Computadores-Logico-Music.jpg',
   },
   {
-    title: 'Lorsa Jeans',
-    tooltip: 'Plataforma de Gestão Têxtil via Ubícua',
-    year: '2023',
-    link: 'https://www.google.com/',
-    image_logo: '/imgs/mascotes.jpeg',
+    title: 'Mr.Goose Group',
+    tooltip: 'Consultoria e Desenvolvido Sistemas e Aplicativos',
+    year: '2009-Atualmente',
+    link: 'https://www.google.com/search?q=Mr.Goose+Group',
+    image_logo: '/imgs/cases/mrgoose.jpeg',
   },
   {
-    title: 'Resolve Assist',
-    tooltip: 'Sistema de Gestão',
-    year: '2022',
-    link: 'https://www.google.com/',
-    image_logo: '/imgs/mascotes.jpeg',
+    title: 'Grupo Promove Soebras',
+    tooltip: 'Desenvolvido Sistemas e WebSites',
+    year: '2011-2012',
+    link: 'https://www.grupopromove.com.br/',
+    image_logo: '/imgs/cases/promove.png',
   },
   {
-    title: 'Seguros Unimed',
-    tooltip: 'Projetos PHP',
-    year: '2021',
-    link: 'https://www.google.com/',
-    image_logo: '/imgs/mascotes.jpeg',
+    title: 'Grupo Animatto',
+    tooltip: 'Desenvolvido Sistemas e WebSites e E-commerce',
+    year: '2013-2014',
+    link: 'https://www.google.com/search?q=Grupo+Animatto',
+    image_logo: '/imgs/cases/animatto.jpg',
   },
   {
-    title: 'Animatto',
-    tooltip: 'E-commerce WooCommerce',
-    year: '2020',
-    link: 'https://www.google.com/',
-    image_logo: '/imgs/mascotes.jpeg',
+    title: 'CECON / Angra Soluções',
+    tooltip: 'Desenvolvido Sistemas e WebSites',
+    year: '2014-2016',
+    link: 'https://www.google.com/search?q=CECON+Angra+Solu%C3%A7%C3%B5es',
+    image_logo: '/imgs/cases/cecon-mg.png',
   },
   {
-    title: 'JSL / Movida',
-    tooltip: 'Projetos internos de TI em Mogi das Cruzes/SP',
-    year: '2019',
-    link: 'https://www.google.com/',
-    image_logo: '/imgs/mascotes.jpeg',
+    title: 'AcessoWeb',
+    tooltip: 'Desenvolvido Sistemas e WebSites',
+    year: '2016',
+    link: 'https://www.google.com/search?q=AcessoWeb+empresa',
+    image_logo: '/imgs/cases/acessoweb.png',
   },
   {
-    title: 'ICTS',
-    tooltip: 'Desenvolvimento Full Stack',
+    title: 'Feira Shop',
+    tooltip: 'Desenvolvido Sistemas e WebSites e E-commerce',
+    year: '2016-2017',
+    link: 'https://www.google.com/search?q=Feira+Shop',
+    image_logo: '/imgs/cases/feira_shop.png',
+  },
+  {
+    title: 'PrimeTS - Prime Technology Solutions',
+    tooltip: 'Consultoria e Desenvolvido Sistemas, Web Sites e Aplicativos',
+    year: '2017',
+    link: 'https://www.google.com/search?q=PrimeTS+Prime+Technology+Solutions',
+    image_logo: '/imgs/cases/primets.png',
+  },
+  {
+    title: 'Zap Gráfica Online',
+    tooltip: 'Desenvolvido Sistemas e WebSites',
+    year: '2017',
+    link: 'https://www.google.com/search?q=Zap+Gr%C3%A1fica+Online',
+    image_logo: '/imgs/cases/zapgrafica.jpeg',
+  },
+  {
+    title: 'Desejo Atendido',
+    tooltip: 'Desenvolvido WebSites e E-commerce',
     year: '2018',
-    link: 'https://www.google.com/',
-    image_logo: '/imgs/mascotes.jpeg',
+    link: 'https://www.google.com/search?q=Desejo+Atendido+classificados',
+    image_logo: '/imgs/cases/desejo-atendido.png',
+  },
+  {
+    title: 'Grupo Integração',
+    tooltip: 'Desenvolvido Sistemas para gestão pública de saúda (SUS)',
+    year: '2020',
+    link: 'https://www.google.com/search?q=Grupo+Integra%C3%A7%C3%A3o+saude',
+    image_logo: '/imgs/cases/grupo_integracao.jpeg',
+  },
+  {
+    title: 'ANB',
+    tooltip: 'Consultoria e Desenvolvido Web Sites e Aplicativos',
+    year: '2010-Atualmente',
+    link: 'https://www.google.com/search?q=ANB+empresa',
+    image_logo: '/imgs/cases/anb.png',
+  },
+  {
+    title: 'Hospital Hilton Rocha',
+    tooltip: 'Desenvolvido Sistemas e WebSites',
+    year: '2011',
+    link: 'https://www.hospitalhiltonrocha.com.br/',
+    image_logo: '/imgs/cases/hospital_hilton_rocha.png',
+  },
+  {
+    title: 'NextID',
+    tooltip: 'Desenvolvido Sistemas e WebSites',
+    year: '2018',
+    link: 'https://www.google.com/search?q=NextID+empresa+tecnologia',
+    image_logo: '/imgs/cases/nextid.jpeg',
+  },
+  {
+    title: 'Soebras',
+    tooltip: 'Desenvolvido Sistemas e WebSites',
+    year: '2011-2012',
+    link: 'https://www.soebras.edu.br/',
+    image_logo: '/imgs/cases/soebras.jpg',
   },
 ];
 
@@ -132,11 +188,11 @@ export default function Cases() {
         >
           {CASES.map((c, i) => (
             <div key={c.title} className="relative group w-[300px] h-[300px] flex-shrink-0 snap-center">
-              {/* Tooltip customizado centralizado no meio do card, balão responsivo */}
-              <div className="cases-tooltip pointer-events-none absolute left-1/2 top-[60%] -translate-x-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 group-hover:pointer-events-auto transition-all duration-200 z-30 flex items-center justify-center w-full h-full">
-                <div className="cases-tooltip-bubble">
+              {/* Tooltip customizado */}
+              <div className="home-tooltip pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 group-hover:pointer-events-auto transition-all duration-200 z-30 flex items-center justify-center w-full h-full">
+                <div className="tooltip-bubble">
                   {c.tooltip}
-                  <span className="cases-tooltip-arrow"></span>
+                  <span className="tooltip-arrow"></span>
                 </div>
               </div>
               <motion.a
@@ -149,18 +205,16 @@ export default function Cases() {
                 viewport={{ once: true }}
                 className="w-full h-full block bg-white rounded-xl overflow-hidden shadow-md border-2 border-gray-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
               >
-                <div className="w-full h-auto bg-gray-100 flex items-center justify-center">
+                <div className="card-image">
                   <img 
                     src={c.image_logo} 
                     alt={c.title} 
-                    className="w-full h-auto object-contain p-4" 
+                    className="w-full h-full object-contain p-4" 
                   />
                 </div>
                 <div className="p-4 flex flex-col items-center justify-center">
-                  <h3 className="text-lg font-bold text-gray-900 mb-1 truncate text-center">
-                    {c.title}
-                  </h3>
-                  <p className="text-lime-600 text-xs text-center font-medium mb-0">{c.year}</p>
+                  <h3 className="text-center font-bold">{c.title}</h3>
+                  <p className="text-center">{c.year}</p>
                 </div>
               </motion.a>
             </div>

@@ -6,12 +6,12 @@ const testimonials = [
     author: 'Dyemerson Almeida – Co-Founder da Plataforma Verde',
   },
   {
-    text: 'Olá! Felipe Machado foi meu funcionário na Angra Games no desenvolvimento do sistema Neo de ensino. Disciplinado, comprometido, além de muito responsável, sempre trabalhou propondo soluções mais eficientes e criativas. Felipe, além de ótimo profissional, é uma pessoa que trabalha muito bem em equipe. Preserva um bom ambiente entre os colegas e está disposto a compartilhar seus conhecimentos. De extrema confiança, recomendo os trabalhos do Felipe e como profissional.',
-    author: 'Marina Valadas França – Sócia-diretora da Angra Games',
-  },
-  {
     text: 'Trabalhei com o Felipe Machado quase 3 anos num projeto inovador e de grande complexidade. Ele sempre foi um responsável desenvolvedor e de grande paixão por tudo que fazia. Metódico, contemplativo e engenhoso nas soluções propostas, possui característica de liderança e excelente predisposição de trabalho em equipe. Um grande coração e boa capacidade de socialização com todos na empresa. Eu autentico essa recomendação e marco como muito positiva sua atuação em nosso projeto.',
     author: 'Adan Ribeiro – Diretor de Marketing Empresarial',
+  },
+  {
+    text: 'Olá! Felipe Machado foi meu funcionário na Angra Games no desenvolvimento do sistema Neo de ensino. Disciplinado, comprometido, além de muito responsável, sempre trabalhou propondo soluções mais eficientes e criativas. Felipe, além de ótimo profissional, é uma pessoa que trabalha muito bem em equipe. Preserva um bom ambiente entre os colegas e está disposto a compartilhar seus conhecimentos. De extrema confiança, recomendo os trabalhos do Felipe e como profissional.',
+    author: 'Marina Valadas França – Sócia-diretora da Angra Games',
   },
   {
     text: 'Trabalhei com o Felipe por 1 ano na Animatto e 6 meses na Primets, ele é um profissional bastante organizado, está sempre disponível para ajudar e possui bastante conhecimento.',

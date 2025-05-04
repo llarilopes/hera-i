@@ -7,75 +7,253 @@ import { motion } from 'framer-motion';
 
 // Compartilhamos o mesmo array de cases usado no componente Cases.tsx
 const CASES = [
+  // Array original
   {
     title: 'Petrobras',
     tooltip: 'Projeto SEGUP via EDGE/UFAL',
     year: '2024-2025',
     link: 'https://www.google.com/',
-    image_logo: '/imgs/mascotes.jpeg',
+    image_logo: '/imgs/cases/semlogo.png',
   },
   {
     title: 'Lorsa Jeans',
     tooltip: 'Plataforma de Gestão Têxtil via Ubícua',
     year: '2023',
     link: 'https://www.google.com/',
-    image_logo: '/imgs/mascotes.jpeg',
+    image_logo: '/imgs/cases/semlogo.png',
   },
   {
     title: 'Resolve Assist',
     tooltip: 'Sistema de Gestão',
     year: '2022',
     link: 'https://www.google.com/',
-    image_logo: '/imgs/mascotes.jpeg',
+    image_logo: '/imgs/cases/semlogo.png',
   },
   {
     title: 'Seguros Unimed',
     tooltip: 'Projetos PHP',
     year: '2021',
     link: 'https://www.google.com/',
-    image_logo: '/imgs/mascotes.jpeg',
-  },
-  {
-    title: 'Animatto',
-    tooltip: 'E-commerce WooCommerce',
-    year: '2020',
-    link: 'https://www.google.com/',
-    image_logo: '/imgs/mascotes.jpeg',
-  },
-  {
-    title: 'JSL / Movida',
-    tooltip: 'Projetos internos de TI em Mogi das Cruzes/SP',
-    year: '2019',
-    link: 'https://www.google.com/',
-    image_logo: '/imgs/mascotes.jpeg',
+    image_logo: '/imgs/cases/semlogo.png',
   },
   {
     title: 'ICTS',
     tooltip: 'Desenvolvimento Full Stack',
     year: '2018',
     link: 'https://www.google.com/',
-    image_logo: '/imgs/mascotes.jpeg',
+    image_logo: '/imgs/cases/semlogo.png',
+  },
+  
+  // Novos registros
+  {
+    title: 'S.O.S Computadores',
+    tooltip: 'Consultoria',
+    year: '1998-1999',
+    link: 'https://www.sos.com.br/',
+    image_logo: '/imgs/cases/S.O.S-Computadores-Logico-Music.jpg',
   },
   {
-    title: 'Cliente X',
-    tooltip: 'Desenvolvimento de Aplicativo Mobile',
-    year: '2017',
-    link: 'https://www.google.com/',
-    image_logo: '/imgs/mascotes.jpeg',
+    title: 'TG Computer',
+    tooltip: 'Consultoria',
+    year: '2004-2009',
+    link: 'https://www.google.com/search?q=TG+Computer',
+    image_logo: '/imgs/cases/semlogo.png',
   },
   {
-    title: 'Cliente Y',
-    tooltip: 'Sistema de ERP Personalizado',
+    title: 'Comercial GPC Indústria e Comércio Ltda. (Fogo Mineiro)',
+    tooltip: 'Consultoria',
+    year: '2005-2006',
+    link: 'https://www.google.com/search?q=Comercial+GPC+Ind%C3%BAstria+e+Com%C3%A9rcio+Ltda+Fogo+Mineiro',
+    image_logo: '/imgs/cases/semlogo.png',
+  },
+  {
+    title: 'Liq (Contax Contact Center)',
+    tooltip: 'Consultoria e Desenvolvido Planilhas Excel Avançadas',
+    year: '2006-2009',
+    link: 'https://www.liq.com.br/',
+    image_logo: '/imgs/cases/semlogo.png',
+  },
+  {
+    title: 'Mr.Goose Group',
+    tooltip: 'Consultoria e Desenvolvido Sistemas e Aplicativos',
+    year: '2009-Atualmente',
+    link: 'https://www.google.com/search?q=Mr.Goose+Group',
+    image_logo: '/imgs/cases/mrgoose.jpeg',
+  },
+  {
+    title: 'Maxmix Comercial Ltda. (Camicado)',
+    tooltip: 'Consultoria',
+    year: '2010',
+    link: 'https://www.camicado.com.br/',
+    image_logo: '/imgs/cases/semlogo.png',
+  },
+  {
+    title: 'Agência Pixel Web',
+    tooltip: 'Consultoria e Desenvolvido Web Sites',
+    year: '2009-2011',
+    link: 'https://www.google.com/search?q=Ag%C3%AAncia+Pixel+Web',
+    image_logo: '/imgs/cases/semlogo.png',
+  },
+  {
+    title: 'Grupo Promove Soebras',
+    tooltip: 'Desenvolvido Sistemas e WebSites',
+    year: '2011-2012',
+    link: 'https://www.grupopromove.com.br/',
+    image_logo: '/imgs/cases/promove.png',
+  },
+  {
+    title: 'Grupo Animatto',
+    tooltip: 'Desenvolvido Sistemas e WebSites e E-commerce',
+    year: '2013-2014',
+    link: 'https://www.google.com/search?q=Grupo+Animatto',
+    image_logo: '/imgs/cases/animatto.jpg',
+  },
+  {
+    title: 'CECON / Angra Soluções',
+    tooltip: 'Desenvolvido Sistemas e WebSites',
+    year: '2014-2016',
+    link: 'https://www.google.com/search?q=CECON+Angra+Solu%C3%A7%C3%B5es',
+    image_logo: '/imgs/cases/cecon-mg.png',
+  },
+  {
+    title: 'AcessoWeb',
+    tooltip: 'Desenvolvido Sistemas e WebSites',
     year: '2016',
-    link: 'https://www.google.com/',
-    image_logo: '/imgs/mascotes.jpeg',
+    link: 'https://www.google.com/search?q=AcessoWeb+empresa',
+    image_logo: '/imgs/cases/acessoweb.png',
   },
   {
-    title: 'Cliente Z',
-    tooltip: 'Consultoria em Infraestrutura Azure',
-    year: '2015',
-    link: 'https://www.google.com/',
-    image_logo: '/imgs/mascotes.jpeg',
+    title: 'Feira Shop',
+    tooltip: 'Desenvolvido Sistemas e WebSites e E-commerce',
+    year: '2016-2017',
+    link: 'https://www.google.com/search?q=Feira+Shop',
+    image_logo: '/imgs/cases/feira_shop.png',
+  },
+  {
+    title: 'PrimeTS - Prime Technology Solutions',
+    tooltip: 'Consultoria e Desenvolvido Sistemas, Web Sites e Aplicativos',
+    year: '2017',
+    link: 'https://www.google.com/search?q=PrimeTS+Prime+Technology+Solutions',
+    image_logo: '/imgs/cases/primets.png',
+  },
+  {
+    title: 'Zap Gráfica Online',
+    tooltip: 'Desenvolvido Sistemas e WebSites',
+    year: '2017',
+    link: 'https://www.google.com/search?q=Zap+Gr%C3%A1fica+Online',
+    image_logo: '/imgs/cases/zapgrafica.jpeg',
+  },
+  {
+    title: 'Desejo Atendido',
+    tooltip: 'Desenvolvido WebSites e E-commerce',
+    year: '2018',
+    link: 'https://www.google.com/search?q=Desejo+Atendido+classificados',
+    image_logo: '/imgs/cases/desejo-atendido.png',
+  },
+  {
+    title: 'Doc88',
+    tooltip: 'Desenvolvido Sistemas e WebSites',
+    year: '2018',
+    link: 'https://www.google.com/search?q=Doc88+empresa+tecnologia',
+    image_logo: '/imgs/cases/semlogo.png',
+  },
+  {
+    title: 'Movida (JSL S.A.)',
+    tooltip: 'Consultoria de Segurança da informação e correções de vulnerabilidades',
+    year: '2018-2019',
+    link: 'https://www.movida.com.br/',
+    image_logo: '/imgs/cases/semlogo.png',
+  },
+  {
+    title: 'Plataforma Verde',
+    tooltip: 'Desenvolvido Sistemas para Prefeitura de SP com uso de IA e Python',
+    year: '2019-2020',
+    link: 'https://www.plataformaverde.com.br/',
+    image_logo: '/imgs/cases/semlogo.png',
+  },
+  {
+    title: 'Grupo Integração',
+    tooltip: 'Desenvolvido Sistemas para gestão pública de saúda (SUS)',
+    year: '2020',
+    link: 'https://www.google.com/search?q=Grupo+Integra%C3%A7%C3%A3o+saude',
+    image_logo: '/imgs/cases/grupo_integracao.jpeg',
+  },
+  {
+    title: '2Mundos Inc',
+    tooltip: 'Desenvolvido Sistemas e Aplicativos',
+    year: '2021',
+    link: 'https://www.google.com/search?q=2Mundos+Inc+empresa+tecnologia',
+    image_logo: '/imgs/cases/semlogo.png',
+  },
+  {
+    title: 'myasosoftware',
+    tooltip: 'Desenvolvido Sistemas e WebSites',
+    year: '2022-2023',
+    link: 'https://www.google.com/search?q=myasosoftware',
+    image_logo: '/imgs/cases/semlogo.png',
+  },
+  {
+    title: 'ICTS',
+    tooltip: 'Desenvolvido Sistemas e WebSites',
+    year: '2024-Atualmente',
+    link: 'https://www.icts.com.br/',
+    image_logo: '/imgs/cases/semlogo.png',
+  },
+  {
+    title: 'Âncora Imóveis Venda e Administração',
+    tooltip: 'Consultoria',
+    year: '2010',
+    link: 'https://www.google.com/search?q=%C3%82ncora+Im%C3%B3veis+Venda+e+Administra%C3%A7%C3%A3o',
+    image_logo: '/imgs/cases/semlogo.png',
+  },
+  {
+    title: 'Organização Nacional dos Estudantes (ONE - ONG)',
+    tooltip: 'Consultoria',
+    year: '2010-2011',
+    link: 'https://www.google.com/search?q=Organiza%C3%A7%C3%A3o+Nacional+dos+Estudantes+ONE+ONG',
+    image_logo: '/imgs/cases/semlogo.png',
+  },
+  {
+    title: 'Minas Agro Produção e Exportação Agro-industrial Ltda.',
+    tooltip: 'Consultoria',
+    year: '2020-2003',
+    link: 'https://www.google.com/search?q=Minas+Agro+Produ%C3%A7%C3%A3o+e+Exporta%C3%A7%C3%A3o+Agro-industrial+Ltda',
+    image_logo: '/imgs/cases/semlogo.png',
+  },
+  {
+    title: 'Minas Caju Distribuidora Ltda.',
+    tooltip: 'Consultoria',
+    year: '2004',
+    link: 'https://www.google.com/search?q=Minas+Caju+Distribuidora+Ltda',
+    image_logo: '/imgs/cases/semlogo.png',
+  },
+  {
+    title: 'ANB',
+    tooltip: 'Consultoria e Desenvolvido Web Sites e Aplicativos',
+    year: '2010-Atualmente',
+    link: 'https://www.google.com/search?q=ANB+empresa',
+    image_logo: '/imgs/cases/anb.png',
+  },
+  {
+    title: 'Hospital Hilton Rocha',
+    tooltip: 'Desenvolvido Sistemas e WebSites',
+    year: '2011',
+    link: 'https://www.hospitalhiltonrocha.com.br/',
+    image_logo: '/imgs/cases/hospital_hilton_rocha.png',
+  },
+  {
+    title: 'NextID',
+    tooltip: 'Desenvolvido Sistemas e WebSites',
+    year: '2018',
+    link: 'https://www.google.com/search?q=NextID+empresa+tecnologia',
+    image_logo: '/imgs/cases/nextid.jpeg',
+  },
+  {
+    title: 'Soebras',
+    tooltip: 'Desenvolvido Sistemas e WebSites',
+    year: '2011-2012',
+    link: 'https://www.soebras.edu.br/',
+    image_logo: '/imgs/cases/soebras.jpg',
   },
 ];
 
@@ -88,23 +266,13 @@ export default function CasesPage() {
       </Head>
       
       <Header />
-      
-      <main className="pt-24 pb-16 bg-gradient-to-b from-white to-gray-50">
-        <div className="container mx-auto px-4">
-          <div className="flex items-center mb-8">
-            <Link href="/" className="text-gray-500 hover:text-lime-600 transition-colors mr-2">
-              Início
-            </Link>
-            <span className="text-gray-400 mx-2">/</span>
-            <span className="text-gray-900 font-medium">Cases de Sucesso</span>
-          </div>
-          
-          <h1 className="text-4xl font-bold text-gray-900 mb-3">Cases de Sucesso</h1>
+      <section className="section cases-page" style={{ padding: '120px 0 64px 0' }}>
+        <div className="container">
+          <h2 className="section-title">Cases de Sucesso</h2>
           <p className="text-gray-600 mb-10 max-w-3xl">
             Conheça alguns dos projetos que desenvolvemos para clientes em diversos segmentos.
             Cada case representa uma solução personalizada que trouxe resultados concretos.
           </p>
-          
           {/* Grid de cards */}
           <div className="cases-grid">
           {CASES.map((c, i) => (
@@ -122,10 +290,10 @@ export default function CasesPage() {
                 className="w-full h-full block relative group"
               >
                 {/* Tooltip customizado */}
-                <div className="cases-tooltip pointer-events-none absolute left-1/2 top-[60%] -translate-x-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 group-hover:pointer-events-auto transition-all duration-200 z-30 flex items-center justify-center w-full h-full">
-                  <div className="cases-tooltip-bubble">
+                <div className="cases-page-tooltip pointer-events-none absolute left-1/2 top-[60%] -translate-x-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 group-hover:pointer-events-auto transition-all duration-200 z-30 flex items-center justify-center w-full h-full">
+                  <div className="tooltip-bubble">
                     {c.tooltip}
-                    <span className="cases-tooltip-arrow"></span>
+                    <span className="tooltip-arrow"></span>
                   </div>
                 </div>
                 <div className="card-image">
@@ -151,15 +319,14 @@ export default function CasesPage() {
               sua empresa a alcançar os melhores resultados.
             </p>
             <Link 
-              href="/contact" 
+              href="/#contact" 
               className="inline-block px-6 py-3 bg-lime-500 text-white font-medium rounded-md hover:bg-lime-600 transition-colors"
             >
               Entre em contato
             </Link>
           </div>
         </div>
-      </main>
-      
+      </section>
       <Footer />
     </>
   );
