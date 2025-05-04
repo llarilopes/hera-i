@@ -15,13 +15,13 @@ module.exports = (phase) => {
   return {
     // Só gera export estático durante o build de produção
     output: isProdBuild ? 'export' : undefined,
-    images: {
-      unoptimized: true,
-    },
-    webpack: (config) => {
-      config.resolve.alias['@'] = path.resolve(__dirname, 'src');
-      return config;
-    },
-    reactStrictMode: true,
+  images: {
+    unoptimized: true,
+  },
+  webpack: (config) => {
+    config.resolve.alias['@'] = path.resolve(__dirname, 'src');
+    return config;
+  },
+  reactStrictMode: true,
   };
 };

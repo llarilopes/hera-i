@@ -34,6 +34,26 @@ body {
     padding: 0 20px;
 }
 
+/* Ocultar barra de rolagem no carrossel */
+.hide-scrollbar {
+    -ms-overflow-style: none;  /* Internet Explorer e Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+    display: none; /* Chrome, Safari e Opera */
+}
+
+/* Card animation on hover */
+.card-hover {
+    transition: all 0.3s ease;
+}
+
+.card-hover:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
 /* Cabeçalho */
 header {
     position: fixed;
@@ -323,7 +343,7 @@ header {
 /* Hero Section */
 .hero {
     height: 100vh;
-    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8dGVjaG5vbG9neSUyMGdyZWVufGVufDB8fDB8fHww&auto=format&fit=crop&w=1500&q=80');
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('/imgs/mascotes.jpeg');
     background-size: cover;
     background-position: center;
     color: var(--white);
@@ -541,8 +561,8 @@ header {
 .cases {
     position: relative;
     padding: 100px 0;
-    background-color: var(--white);
-    opacity: 0;
+    background: linear-gradient(to bottom, #fff 0%, #f5f5f5 100%);
+    opacity: 1;
     transform: translateY(20px);
     transition: var(--transition);
 }
@@ -563,38 +583,390 @@ header {
     );
 }
 
-.cases.visible {
-    opacity: 1;
-    transform: translateY(0);
+.cases .section-title {
+    font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: #222;
+    margin-bottom: 2rem;
+    text-align: left;
+    position: relative;
 }
 
-.clients-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 30px;
-    margin-bottom: 50px;
+.cases .section-title::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background: var(--primary-color);
+    position: absolute;
+    left: 0;
+    bottom: -12px;
+    border-radius: 2px;
 }
 
-.client-card {
-    background-color: var(--light-gray);
-    padding: 30px;
-    border-radius: 5px;
-    text-align: center;
-    transition: var(--transition);
+.cases a {
+    text-decoration: none !important;
+    color: inherit;
 }
 
-.client-card:hover {
-    background-color: var(--primary-color);
+.cases .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
 }
 
-.client-card h3 {
-    font-size: 14px;
-    margin-bottom: 10px;
+.cases .hide-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+.cases .hide-scrollbar::-webkit-scrollbar {
+    display: none;
 }
 
-.client-card p {
-    font-size: 12px;
-    color: #555;
+.cases .snap-x {
+    scroll-snap-type: x mandatory;
+}
+
+.cases .snap-center {
+    scroll-snap-align: center;
+}
+
+.cases .bg-white {
+    background: #fff !important;
+}
+
+.cases .rounded-xl {
+    border-radius: 0rem !important;
+}
+
+.cases .shadow-md {
+    box-shadow: 0 4px 16px rgba(0,0,0,0.08) !important;
+}
+
+.cases .hover\:shadow-xl:hover {
+    box-shadow: 0 10px 25px rgba(0,0,0,0.12) !important;
+}
+
+.cases .border-2 {
+    border: 2px solid #f3f3f3 !important;
+}
+
+.cases .hover\:-translate-y-1:hover {
+    transform: translateY(-4px) !important;
+}
+
+.cases .transition-all {
+    transition: all 0.3s cubic-bezier(.4,0,.2,1) !important;
+}
+
+.cases .duration-300 {
+    transition-duration: 300ms !important;
+}
+
+.cases .text-lg {
+    font-size: 1.125rem !important;
+    font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+    font-weight: 700;
+}
+
+.cases .font-bold {
+    font-weight: 700 !important;
+}
+
+.cases .text-gray-900 {
+    color: #222 !important;
+}
+
+.cases .text-gray-600 {
+    color: #666 !important;
+}
+
+.cases .text-lime-600 {
+    color: var(--primary-color) !important;
+}
+
+.cases .rounded-full {
+    border-radius: 9999px !important;
+}
+
+.cases .bg-lime-500 {
+    background: var(--primary-color) !important;
+    color: #fff !important;
+}
+
+.cases .hover\:bg-lime-600:hover {
+    background: var(--primary-dark) !important;
+}
+
+.cases .shadow-md {
+    box-shadow: 0 4px 16px rgba(0,0,0,0.08) !important;
+}
+
+.cases .hover\:shadow-xl:hover {
+    box-shadow: 0 10px 25px rgba(0,0,0,0.12) !important;
+}
+
+.cases .overflow-hidden {
+    overflow: hidden !important;
+}
+
+.cases .truncate {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.cases .p-4 {
+    padding: 1rem !important;
+}
+
+.cases .mb-1 {
+    margin-bottom: 0.25rem !important;
+}
+
+.cases .mb-8 {
+    margin-bottom: 2rem !important;
+}
+
+.cases .flex {
+    display: flex !important;
+}
+
+.cases .gap-5 {
+    gap: 1.25rem !important;
+}
+
+.cases .items-center {
+    align-items: center !important;
+}
+
+.cases .justify-between {
+    justify-content: space-between !important;
+}
+
+.cases .absolute {
+    position: absolute !important;
+}
+
+.cases .relative {
+    position: relative !important;
+}
+
+.cases .w-10 {
+    width: 2.5rem !important;
+}
+
+.cases .h-10 {
+    height: 2.5rem !important;
+}
+
+.cases .z-10 {
+    z-index: 10 !important;
+}
+
+.cases .transition {
+    transition: var(--transition) !important;
+}
+
+.cases .pb-6 {
+    padding-bottom: 1.5rem !important;
+}
+
+.cases .md\:pb-4 {
+    padding-bottom: 1rem !important;
+}
+
+.cases .-mx-2 {
+    margin-left: -0.5rem !important;
+    margin-right: -0.5rem !important;
+}
+
+.cases .px-2 {
+    padding-left: 0.5rem !important;
+    padding-right: 0.5rem !important;
+}
+
+.cases .min-w-\[240px\] {
+    min-width: 240px !important;
+}
+.cases .md\:min-w-\[300px\] {
+    min-width: 300px !important;
+}
+
+.cases .flex-shrink-0 {
+    flex-shrink: 0 !important;
+}
+
+.cases .snap-center {
+    scroll-snap-align: center !important;
+}
+
+.cases .object-contain {
+    object-fit: contain !important;
+}
+
+.cases .p-4 img {
+    padding: 1rem !important;
+}
+
+.cases .rounded-xl img {
+    border-radius: 0rem !important;
+}
+
+.cases .overflow-hidden img {
+    overflow: hidden !important;
+}
+
+.cases .border-gray-100 {
+    border-color: #f3f3f3 !important;
+}
+
+.cases .text-center {
+    text-align: center !important;
+}
+
+.cases .font-medium {
+    font-weight: 500 !important;
+}
+
+.cases .gap-1 {
+    gap: 0.25rem !important;
+}
+
+.cases .text-xl {
+    font-size: 1.25rem !important;
+}
+
+.cases .top-1\/2 {
+    top: 50% !important;
+}
+
+.cases .-left-4 {
+    left: -1rem !important;
+}
+
+.cases .-right-4 {
+    right: -1rem !important;
+}
+
+.cases .-translate-y-1\/2 {
+    transform: translateY(-50%) !important;
+}
+
+.cases .pb-percent-fix {
+    padding-bottom: 56.25% !important;
+}
+
+.cases .bg-gray-100 {
+    background: #f5f5f5 !important;
+}
+
+.cases .inset-0 {
+    top: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    position: absolute !important;
+}
+
+/* --- BLOCO UNIFICADO .cases --- */
+.cases .card-item,
+.card-item {
+    width: 300px !important;
+    min-width: 300px !important;
+    max-width: 300px !important;
+    height: 300px !important;
+    min-height: 300px !important;
+    max-height: 300px !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: stretch;
+    box-sizing: border-box;
+    margin: 1rem !important;
+    padding: 0.5rem !important;
+}
+
+.cases .card-item > a,
+.card-item > a {
+    background: #ffffff !important;
+    border-radius: 0 !important;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06) !important;
+    transition: all 0.3s ease !important;
+    height: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    overflow: hidden !important;
+}
+
+.cases .card-item > a:hover,
+.card-item > a:hover {
+    transform: translateY(-4px) !important;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04) !important;
+}
+
+.cases .card-image,
+.card-image {
+    height: 180px !important;
+    min-height: 180px !important;
+    max-height: 180px !important;
+    background: #f9fafb !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    border-top-left-radius: 1rem !important;
+    border-top-right-radius: 1rem !important;
+    overflow: hidden !important;
+}
+
+.cases .card-image img,
+.card-image img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: contain !important;
+    padding: 1.5rem !important;
+}
+
+.cases .card-item .p-4,
+.card-item .p-4 {
+    flex: 1 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: center !important;
+    padding: 1rem !important;
+}
+
+.cases .card-item h3,
+.card-item h3 {
+    font-family: 'Press Start 2P', cursive !important;
+    font-size: 1rem !important;
+    font-weight: 700 !important;
+    color: #000 !important;
+    margin-bottom: 0.25rem !important;
+    text-align: center !important;
+    line-height: 1.2 !important;
+}
+
+.cases .card-item p,
+.card-item p {
+    font-family: 'Press Start 2P', cursive !important;
+    font-size: 0.85rem !important;
+    color: var(--primary-color) !important;
+    font-weight: 600 !important;
+    text-align: center !important;
+}
+
+/* Container dos cards na página de cases */
+.cases-grid {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    gap: 2rem !important;
+    padding: 2rem !important;
+    margin: 0 auto !important;
+    max-width: 1400px !important;
 }
 
 /* Depoimentos */
@@ -1003,4 +1375,132 @@ footer {
 /* Global Smooth Scroll */
 html {
     scroll-behavior: smooth;
+}
+
+/* Tooltip customizado dos cases */
+.cases-tooltip {
+  pointer-events: none;
+  position: absolute;
+  left: 100%;
+  top: 100%;
+  transform: translate(-50%, -50%);
+  z-index: 30;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.cases-tooltip-bubble {
+  max-width: 260px;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.85);
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 18px 20px 16px 20px;
+  border-radius: 16px;
+  box-shadow: 0 8px 32px 0 rgba(0,0,0,0.18);
+  position: relative;
+  text-align: center;
+  word-break: break-word;
+  white-space: pre-line;
+  line-height: 1.4;
+  pointer-events: auto;
+  animation: fadeIn 0.2s;
+  transition: background 0.3s;
+  margin-top: 0px;
+}
+.cases-tooltip-arrow {
+  position: absolute;
+  left: 50%;
+  top: 100%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 14px solid transparent;
+  border-right: 14px solid transparent;
+  border-top: 14px solid rgba(0, 0, 0, 0.85);
+  margin-top: -2px;
+}
+
+/* Estilo para botões de navegação do carrossel */
+.cases .rounded-full.bg-lime-500 {
+  width: 44px !important;
+  height: 44px !important;
+  min-width: 44px !important;
+  min-height: 44px !important;
+  max-width: 44px !important;
+  max-height: 44px !important;
+  border-radius: 0 !important; /* pixel style */
+  background: var(--primary-color) !important;
+  color: #fff !important;
+  box-shadow: 0 6px 24px 0 rgba(0,0,0,0.18) !important;
+  border: none !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  z-index: 20 !important;
+  font-size: 1.5rem !important;
+  cursor: pointer !important;
+  position: absolute !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  transition: background 0.2s, box-shadow 0.2s, transform 0.2s;
+}
+.cases .rounded-full.bg-lime-500:hover {
+  background: var(--primary-dark) !important;
+  box-shadow: 0 12px 32px 0 rgba(0,0,0,0.22) !important;
+  transform: translateY(-50%) scale(1.08) !important;
+}
+
+/* Garantir bordas retas nos cards */
+.card-item .rounded-xl {
+  border-radius: 0 !important;
+}
+
+/* Título da seção Cases usando 'Press Start 2P' */
+.section-title, h1.text-4xl {
+  font-family: 'Press Start 2P', cursive !important;
+}
+
+/* Ajuste consistente para todos os cards */
+.cases .card-item h3,
+.card-item h3 {
+  font-family: 'Press Start 2P', cursive !important;
+  font-size: 1rem !important;
+  font-weight: 700 !important;
+  color: #000 !important;
+  margin-bottom: 0.25rem !important;
+  text-align: center !important;
+  line-height: 1.2 !important;
+}
+
+.cases .card-item p,
+.card-item p {
+  font-family: 'Press Start 2P', cursive !important;
+  font-size: 0.85rem !important;
+  color: var(--primary-color) !important;
+  font-weight: 600 !important;
+  text-align: center !important;
+}
+
+/* Ajustes específicos para os cards da página /cases */
+.card-item a {
+  text-decoration: none !important;
+}
+
+.card-item a h3,
+.card-item a p {
+  text-decoration: none !important;
+}
+
+/* Garantir que a imagem ocupe 100% da largura */
+.card-item .card-image img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: contain !important;
+  padding: 0 !important;
+  margin: 0 auto !important;
+  display: block !important;
 }
